@@ -27,7 +27,6 @@ class UpdateUserRequest extends FormRequest
         return [
             "name" => "string",
             "lastname" => "string",
-            "address" => "string",
             "phone" => "string|unique:users,phone," . $id,
             "birthday" => "date",
             "email" => "email|string|unique:users,email," . $id,

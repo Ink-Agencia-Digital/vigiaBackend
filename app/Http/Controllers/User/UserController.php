@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends ApiController
 {
@@ -18,7 +19,7 @@ class UserController extends ApiController
      */
     public function index()
     {
-        return $this->collectionResponse(UserResource::collection($this->getModel(new User, [])));
+        return $this->collectionResponse(UserResource::collection($this->getModel(new User, ['roles.permissions'])));
     }
 
     /**
@@ -42,6 +43,10 @@ class UserController extends ApiController
         $user = new User;
         $user->fill($request->all());
         $user->saveOrFail();
+        if ($request->has('role')) {
+            $role = Role::where('name', $request->role)->firstOrFail();
+            $user->assignRole($role);
+        }
         return $this->api_success([
             'data' => new UserResource($user),
             'message' => __('pages.responses.created'),
@@ -88,9 +93,6 @@ class UserController extends ApiController
         }
         if ($request->has("lastname")) {
             $user->lastname = $request->lastname;
-        }
-        if ($request->has("address")) {
-            $user->address = $request->address;
         }
         if ($request->has("birthday")) {
             $user->birthday = $request->birthday;

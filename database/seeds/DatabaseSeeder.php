@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,5 +27,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => '2019-06-05 14:22:20'
             ],
         ]);
+
+        $this->call([RolesAndPermissionsSeeder::class]);
     }
 }
