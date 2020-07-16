@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -25,7 +26,8 @@ class User extends Authenticatable
         'lastname',
         'birthday',
         'phone',
-        'password'
+        'password',
+        'address'
     ];
 
 

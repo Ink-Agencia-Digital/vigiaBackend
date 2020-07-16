@@ -36,7 +36,7 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mandrillapp.com'),
+            'host' => env('MAIL_HOST', 'smtp.gmail.com'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME'),
@@ -84,7 +84,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@vigia.tk'),
+        'address' => env('MAIL_FROM_ADDRESS', 'ricardo.inkdigital@gmail.com'),
         'name' => env('MAIL_FROM_NAME', 'NoReply'),
     ],
 
@@ -106,5 +106,4 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
-
 ];
