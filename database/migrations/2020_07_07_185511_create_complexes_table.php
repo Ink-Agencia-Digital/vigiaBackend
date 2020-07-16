@@ -15,6 +15,11 @@ class CreateComplexesTable extends Migration
     {
         Schema::create('complexes', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('address');
+            $table->string('lat');
+            $table->string('lng');
+            $table->json('geofence')->nullable();
             $table->timestamps();
         });
     }

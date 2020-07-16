@@ -15,7 +15,13 @@ class CreateTowersTable extends Migration
     {
         Schema::create('towers', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+
+            $table->bigInteger('complex_id')->unsigned();
             $table->timestamps();
+            $table->SoftDeletes();
+
+            $table->foreign("complex_id")->references("id")->on("complexes")->onDelete("cascade");
         });
     }
 

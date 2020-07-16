@@ -15,7 +15,13 @@ class CreateApartmentsTable extends Migration
     {
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+
+            $table->bigInteger('tower_id')->unsigned();
             $table->timestamps();
+            $table->SoftDeletes();
+
+            $table->foreign("tower_id")->references("id")->on("towers")->onDelete("cascade");
         });
     }
 

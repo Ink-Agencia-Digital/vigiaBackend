@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" rel="stylesheet" />
     <title>Onlypult | Dashboard</title>
-  <link href="/superadmin/js/components.js" rel="prefetch"><link href="/superadmin/js/components~pages.js" rel="prefetch"><link href="/superadmin/js/pages.js" rel="prefetch"><link href="/superadmin/js/app.js" rel="preload" as="script"><link href="/superadmin/js/chunk-vendors.js" rel="preload" as="script"></head>
+  <link href="/superadmin/js/components.js" rel="prefetch"><link href="/superadmin/js/pages.js" rel="prefetch"><link href="/superadmin/js/app.js" rel="preload" as="script"><link href="/superadmin/js/chunk-vendors.js" rel="preload" as="script"></head>
   <body>
     <noscript>
       <strong>We're sorry but Vue.js doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>

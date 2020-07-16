@@ -17,20 +17,20 @@ const routes = [
       })
   },
   {
-    path: "/categories",
+    path: "/404",
     component: resolve =>
-      import(/* webpackChunkName: "pages" */ "@/pages/Category.vue").then(
-        Category => {
-          resolve(Category.default);
+      import(/* webpackChunkName: "pages" */ "@/pages/Error404.vue").then(
+        Error404 => {
+          resolve(Error404.default);
         }
       )
   },
   {
-    path: "/courses",
+    path: "/confirmation",
     component: resolve =>
-      import(/* webpackChunkName: "pages" */ "@/pages/Course.vue").then(
-        Course => {
-          resolve(Course.default);
+      import(/* webpackChunkName: "pages" */ "@/pages/Confirmation.vue").then(
+        Confirmation => {
+          resolve(Confirmation.default);
         }
       )
   }
