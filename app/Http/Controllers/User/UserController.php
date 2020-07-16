@@ -6,8 +6,10 @@ use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
+use App\Mail\ForgotPassword;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
 
 class UserController extends ApiController
@@ -19,6 +21,7 @@ class UserController extends ApiController
      */
     public function index()
     {
+        Mail::to('ricardoandres9728@hotmail.com')->send(new ForgotPassword);
         return $this->collectionResponse(UserResource::collection($this->getModel(new User, ['roles.permissions'])));
     }
 
