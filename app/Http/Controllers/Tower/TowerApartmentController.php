@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers\Tower;
 
-use App\Http\Controllers\Controller;
+use App\Apartment;
+use App\Http\Controllers\Api\ApiController;
+use App\Http\Resources\ApartmentResource;
 use App\Tower;
 use Illuminate\Http\Request;
 
-class TowerApartmentController extends Controller
+class TowerApartmentController extends ApiController
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Tower $tower)
     {
-        //
+        $apartments = $tower->apartments();
+        return $this->collectionResponse(ApartmentResource::collection($this->getModel(new Apartment, [], $apartments)));
     }
 
     /**

@@ -1,24 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Complex;
+namespace App\Http\Controllers\Apartemen;
 
-use App\Complex;
+use App\Apartment;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\TowerResource;
-use App\Tower;
 use Illuminate\Http\Request;
 
-class ComplexTowerController extends Controller
+class ApartmentUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Complex $complex)
+    public function index()
     {
-        $towers = $complex->buildings();
-        return $this->collectionResponse(TowerResource::collection($this->getModel(new Tower(), [], $towers)));
+        //
     }
 
     /**
@@ -45,10 +42,10 @@ class ComplexTowerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Complex  $complex
+     * @param  \App\Apartment  $apartment
      * @return \Illuminate\Http\Response
      */
-    public function show(Complex $complex)
+    public function show(Apartment $apartment)
     {
         //
     }
@@ -56,10 +53,10 @@ class ComplexTowerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Complex  $complex
+     * @param  \App\Apartment  $apartment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Complex $complex)
+    public function edit(Apartment $apartment)
     {
         //
     }
@@ -68,10 +65,10 @@ class ComplexTowerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Complex  $complex
+     * @param  \App\Apartment  $apartment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Complex $complex)
+    public function update(Request $request, Apartment $apartment)
     {
         //
     }
@@ -79,10 +76,10 @@ class ComplexTowerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Complex  $complex
+     * @param  \App\Apartment  $apartment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Complex $complex)
+    public function destroy(Apartment $apartment)
     {
         //
     }
