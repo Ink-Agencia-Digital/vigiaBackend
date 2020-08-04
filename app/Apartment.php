@@ -25,4 +25,9 @@ class Apartment extends Model
     {
         $this->hasMany(Code::class);
     }
+
+    public function warehouses()
+    {
+        $this->hasMany(Warehouse::class);
+    }
 }

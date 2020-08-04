@@ -26,4 +26,6 @@ Route::resource('complexes', 'Complex\ComplexController', ['except' => ['create'
 Route::resource('towers', 'Tower\TowerController', ['except' => ['create', 'edit']]);
 Route::resource('apartments', 'Apartment\ApartmentController', ['except' => ['create', 'edit']]);
 Route::resource('apartments.codes', 'Apartment\ApartmentCodeController', ['only' => ['index']]);
+Route::resource('apartments.users', 'Apartment\ApartmentUserController', ['only' => ['index']]);
+Route::resource('warehouses', 'Warehouse\WarehouseController', ['except' => ['create', 'edit']]);
 Route::resource('codes', 'Code\CodeController', ['except' => ['create', 'edit']]);

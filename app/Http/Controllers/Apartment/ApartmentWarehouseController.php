@@ -6,10 +6,10 @@ use App\Apartment;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ApartmentResource;
-use App\User;
+use App\Warehouse;
 use Illuminate\Http\Request;
 
-class ApartmentUserController extends ApiController
+class ApartmentWarehouseController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class ApartmentUserController extends ApiController
      */
     public function index(Apartment $apartment)
     {
-        return $this->collectionResponse(ApartmentResource::collection($this->getModel(new User, [], $apartment->users())));
+        return $this->collectionResponse(ApartmentResource::collection($this->getModel(new Warehouse, [], $apartment->warehouses())));
     }
 
     /**
@@ -37,7 +37,7 @@ class ApartmentUserController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Apartment $apartment)
+    public function store(Request $request)
     {
         //
     }
