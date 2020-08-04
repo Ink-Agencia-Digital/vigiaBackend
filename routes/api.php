@@ -22,3 +22,7 @@ Route::post('oauth/token', '\Laravel\Passport\Http\Controllers\AccessTokenContro
 Route::post('email/verify', 'Auth\VerifyEmailController@verifyMail');
 
 Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
+Route::resource('complexes', 'Complex\ComplexController', ['except' => ['create', 'edit']]);
+Route::resource('towers', 'Tower\TowerController', ['except' => ['create', 'edit']]);
+Route::resource('apartments', 'Apartment\ApartmentController', ['except' => ['create', 'edit']]);
+Route::resource('codes', 'Code\CodeController', ['except' => ['create', 'edit']]);

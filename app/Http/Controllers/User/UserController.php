@@ -11,6 +11,7 @@ use App\Mail\ForgotPassword;
 use App\User;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 
 
@@ -46,13 +47,20 @@ class UserController extends ApiController
     {
         $user = new User;
         $user->fill($request->all());
+
+        if ($request->has('photo')) {
+            $user->photo = $request->photo->store('photos');
+        }
+
+
         $user->saveOrFail();
         if ($request->has('role')) {
             $role = Role::where('name', $request->role)->firstOrFail();
             $user->assignRole($role);
         }
 
-        VerifyEmailController::sendEmail($user);
+
+        //  VerifyEmailController::sendEmail($user);
 
         return $this->api_success([
             'data' => new UserResource($user),
@@ -95,17 +103,24 @@ class UserController extends ApiController
         if ($request->has("name")) {
             $user->name = $request->name;
         }
-        if ($request->has("email")) {
-            $user->email = $request->email;
-        }
         if ($request->has("lastname")) {
             $user->lastname = $request->lastname;
         }
-        if ($request->has("birthday")) {
-            $user->birthday = $request->birthday;
-        }
         if ($request->has("phone")) {
             $user->phone = $request->phone;
+        }
+        if ($request->has("identification")) {
+            $user->identification = $request->identification;
+        }
+        if ($request->has("email")) {
+            $user->email = $request->email;
+        }
+        if ($request->has("ice")) {
+            $user->ice = $request->ice;
+        }
+        if ($request->has("photo")) {
+            Storage::delete($user->photo);
+            $user->photo = $request->photo->store('images');
         }
 
         if (!$user->isDirty()) {

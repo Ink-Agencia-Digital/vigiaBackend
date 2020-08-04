@@ -56,10 +56,13 @@ class CodeController extends ApiController
                 $random_character = $input[random_int(0, $input_length - 1)];
                 $random_string .= $random_character;
             }
+            return $random_string;
         }
 
         $code->code = generate_string($permitted_chars, 5);
-
+        while (Code::where('code', $code->code)->first()) {
+            $code->code = generate_string($permitted_chars, 5);
+        }
         $code->saveOrFail();
 
         return $this->api_success([

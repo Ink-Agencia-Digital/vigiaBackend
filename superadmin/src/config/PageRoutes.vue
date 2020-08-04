@@ -17,6 +17,22 @@ const routes = [
       })
   },
   {
+    path: "/users",
+    component: resolve =>
+      import(/* webpackChunkName: "pages" */ "@/pages/User.vue").then(User => {
+        resolve(User.default);
+      })
+  },
+  {
+    path: "/complexes",
+    component: resolve =>
+      import(/* webpackChunkName: "pages" */ "@/pages/Complex.vue").then(
+        Complex => {
+          resolve(Complex.default);
+        }
+      )
+  },
+  {
     path: "/404",
     component: resolve =>
       import(/* webpackChunkName: "pages" */ "@/pages/Error404.vue").then(

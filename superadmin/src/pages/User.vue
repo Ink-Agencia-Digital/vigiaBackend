@@ -53,21 +53,21 @@ export default {
   components: {
     CreateUser: resolve => {
       import(
-        /* webpackChunkName: "components" */ "@/components/categories/CreateUser.vue"
+        /* webpackChunkName: "components" */ "@/components/users/CreateUser.vue"
       ).then(CreateUser => {
         resolve(CreateUser.default);
       });
     },
     ListUsers: resolve => {
       import(
-        /* webpackChunkName: "components" */ "@/components/categories/ListUsers.vue"
+        /* webpackChunkName: "components" */ "@/components/users/ListUsers.vue"
       ).then(ListUsers => {
         resolve(ListUsers.default);
       });
     },
     UpdateUser: resolve => {
       import(
-        /* webpackChunkName: "components" */ "@/components/categories/UpdateUser.vue"
+        /* webpackChunkName: "components" */ "@/components/users/UpdateUser.vue"
       ).then(UpdateUser => {
         resolve(UpdateUser.default);
       });

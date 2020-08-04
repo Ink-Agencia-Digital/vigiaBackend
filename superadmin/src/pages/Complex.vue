@@ -2,8 +2,8 @@
   <div>
     <!-- begin page-header -->
     <h1 class="page-header">
-      Categorias
-      <small>Admnistracion de categorias</small>
+      Conjuntos
+      <small>Admnistracion de conjuntos</small>
     </h1>
     <!-- end page-header -->
 
@@ -16,8 +16,8 @@
             leave-active-class="bounce-out-bck"
             mode="out-in"
           >
-            <CreateCategory
-              v-if="!selectedCategory"
+            <CreateComplex
+              v-if="!selectedComplex"
               :key="registerKey"
               @registrationSuccessful="registrationSuccessful"
               @resetRegister="resetRegister"
@@ -25,7 +25,7 @@
           </transition>
         </b-col>
         <b-col md="12">
-          <ListCategories ref="categories-list" @selectCategory="selectCategory" />
+          <ListComplexes ref="complexes-list" @selectComplex="selectComplex" />
         </b-col>
         <b-col md="12">
           <transition
@@ -34,9 +34,9 @@
             leave-active-class="bounce-out-bck"
             mode="out-in"
           >
-            <UpdateCategory
-              v-if="selectedCategory"
-              :initialCategory="selectedCategory"
+            <UpdateComplex
+              v-if="selectedComplex"
+              :initialCategory="selectedComplex"
               :key="updateKey"
               @resetUpdate="resetUpdate"
               @updateSuccess="updateSuccess"
@@ -51,54 +51,54 @@
 <script>
 export default {
   components: {
-    CreateCategory: resolve => {
+    CreateComplex: resolve => {
       import(
-        /* webpackChunkName: "components" */ "@/components/categories/CreateCategory.vue"
-      ).then(CreateCategory => {
-        resolve(CreateCategory.default);
+        /* webpackChunkName: "components" */ "@/components/complexes/CreateComplex.vue"
+      ).then(CreateComplex => {
+        resolve(CreateComplex.default);
       });
     },
-    ListCategories: resolve => {
+    ListComplexes: resolve => {
       import(
-        /* webpackChunkName: "components" */ "@/components/categories/ListCategories.vue"
-      ).then(ListCategories => {
-        resolve(ListCategories.default);
+        /* webpackChunkName: "components" */ "@/components/complexes/ListComplexes.vue"
+      ).then(ListComplexes => {
+        resolve(ListComplexes.default);
       });
     },
-    UpdateCategory: resolve => {
+    UpdateComplex: resolve => {
       import(
-        /* webpackChunkName: "components" */ "@/components/categories/UpdateCategory.vue"
-      ).then(UpdateCategory => {
-        resolve(UpdateCategory.default);
+        /* webpackChunkName: "components" */ "@/components/complexes/UpdateComplex.vue"
+      ).then(UpdateComplex => {
+        resolve(UpdateComplex.default);
       });
     }
   },
   data() {
     return {
-      selectedCategory: null,
+      selectedComplex: null,
       registerKey: 1,
       listKey: 1,
       updateKey: 1
     };
   },
   methods: {
-    selectCategory(category) {
+    selectComplex(complex) {
       this.updateKey++;
-      this.selectedCategory = { ...category };
+      this.selectedComplex = { ...complex };
     },
     resetRegister() {
       this.registerKey++;
     },
     resetUpdate() {
-      this.selectedCategory = null;
+      this.selectedComplex = null;
       this.updateKey++;
     },
     registrationSuccessful() {
       this.resetRegister();
-      this.$refs["categories-list"].loadCategories();
+      this.$refs["complexes-list"].loadComplexes();
     },
     updateSuccess() {
-      this.$refs["categories-list"].loadCategories();
+      this.$refs["complexes-list"].loadComplexes();
     }
   }
 };
