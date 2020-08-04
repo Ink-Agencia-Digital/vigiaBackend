@@ -19,6 +19,11 @@ class Complex extends Model
     ];
 
 
+    protected $casts = [
+        'geofence' => 'array',
+    ];
+
+
     /** RELATIONSHIPS */
 
     public function towers()

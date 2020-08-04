@@ -19,7 +19,7 @@ class CreateComplexesTable extends Migration
             $table->string('address');
             $table->string('lat');
             $table->string('lng');
-            $table->json('geofence')->nullable();
+            $table->string('geofence')->nullable();
             $table->timestamps();
         });
     }
