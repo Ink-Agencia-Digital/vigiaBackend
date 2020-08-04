@@ -61,7 +61,7 @@ class User extends Authenticatable
 
     public function apartments()
     {
-        return $this->belongsToMany(Apartment::class, 'users_apartments')
+        return $this->belongsToMany(Apartment::class, 'users_apartments');
     }
 
 }
