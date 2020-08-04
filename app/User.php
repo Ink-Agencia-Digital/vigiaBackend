@@ -27,7 +27,8 @@ class User extends Authenticatable
         'identification',
         'email',
         'ice',
-        'photo'
+        'photo', 
+        'password'
     ];
 
 
