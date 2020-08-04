@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Apartment;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Requests\StoreUserRequest;
@@ -53,10 +54,16 @@ class UserController extends ApiController
         }
         $user->saveOrFail();
 
-        
+
         if ($request->has('role')) {
             $role = Role::where('name', $request->role)->firstOrFail();
             $user->assignRole($role);
+        }
+
+        if ($request->has('apartment_id')) {
+            $apartment = Apartment::findOrFail($request->apartment_id);
+            $apartment->users()->attach($user);
+            $user->load(['apartments']);
         }
 
 

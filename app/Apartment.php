@@ -18,16 +18,16 @@ class Apartment extends Model
 
     public function users()
     {
-        $this->belongsToMany(User::class, 'users_apartments');
+        return $this->belongsToMany(User::class, 'users_apartments');
     }
 
     public function codes()
     {
-        $this->hasMany(Code::class);
+        return $this->hasMany(Code::class);
     }
 
     public function warehouses()
     {
-        $this->hasMany(Warehouse::class);
+        return $this->hasMany(Warehouse::class);
     }
 }
