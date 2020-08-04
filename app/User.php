@@ -56,4 +56,12 @@ class User extends Authenticatable
         $this->attributes["password"] = Hash::make($value);
     }
 
+
+    /** Relationships */
+
+    public function apartments()
+    {
+        return $this->belongsToMany(Apartment::class, 'users_apartments')
+    }
+
 }
