@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    return $request->user()->load(['roles']);
 });
 
 Route::post('oauth/token', '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');
@@ -25,4 +25,5 @@ Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]
 Route::resource('complexes', 'Complex\ComplexController', ['except' => ['create', 'edit']]);
 Route::resource('towers', 'Tower\TowerController', ['except' => ['create', 'edit']]);
 Route::resource('apartments', 'Apartment\ApartmentController', ['except' => ['create', 'edit']]);
+Route::resource('apartments.codes', 'Apartment\ApartmentCodeController', ['only' => ['index']]);
 Route::resource('codes', 'Code\CodeController', ['except' => ['create', 'edit']]);

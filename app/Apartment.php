@@ -20,4 +20,9 @@ class Apartment extends Model
     {
         $this->belongsToMany(User::class, 'users_apartments');
     }
+
+    public function codes()
+    {
+        $this->hasMany(Code::class);
+    }
 }
