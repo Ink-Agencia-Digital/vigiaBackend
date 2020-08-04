@@ -51,9 +51,9 @@ class UserController extends ApiController
         if ($request->has('photo')) {
             $user->photo = $request->photo->store('photos');
         }
-
-
         $user->saveOrFail();
+
+        
         if ($request->has('role')) {
             $role = Role::where('name', $request->role)->firstOrFail();
             $user->assignRole($role);
