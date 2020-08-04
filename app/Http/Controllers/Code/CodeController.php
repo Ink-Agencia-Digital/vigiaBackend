@@ -114,6 +114,11 @@ class CodeController extends ApiController
      */
     public function destroy(Code $code)
     {
-        //
+        $code->delete();
+        return $this->api_success([
+            'data' => new CodeResource($code),
+            'message' => __('pages.responses.deleted'),
+            'code' => 201
+        ], 201);
     }
 }
