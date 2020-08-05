@@ -13,6 +13,7 @@ class Vehicle extends Model
         'apartment_id',
         'brand',
         'year',
-        'color'
+        'color',
+        'plate'
     ];
 }

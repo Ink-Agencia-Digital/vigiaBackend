@@ -18,6 +18,7 @@ class CreateVehiclesTable extends Migration
             $table->string('brand');
             $table->string('year');
             $table->string('color');
+            $table->string('plate');
             $table->bigInteger('apartment_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
