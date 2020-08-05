@@ -30,4 +30,9 @@ class Apartment extends Model
     {
         return $this->hasMany(Warehouse::class);
     }
+
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class);
+    }
 }

@@ -28,5 +28,7 @@ Route::resource('apartments', 'Apartment\ApartmentController', ['except' => ['cr
 Route::resource('apartments.codes', 'Apartment\ApartmentCodeController', ['only' => ['index']]);
 Route::resource('apartments.users', 'Apartment\ApartmentUserController', ['except' => ['create', 'edit']]);
 Route::resource('apartments.warehouses', 'Apartment\ApartmentWarehouseController', ['only' => ['index']]);
+Route::resource('apartments.vehicles', 'Apartment\ApartmentVehicleController', ['only' => ['index']]);
 Route::resource('warehouses', 'Warehouse\WarehouseController', ['except' => ['create', 'edit']]);
+Route::resource('vehicles', 'Vehicle\VehicleController', ['except' => ['create', 'edit']]);
 Route::resource('codes', 'Code\CodeController', ['except' => ['create', 'edit']]);
