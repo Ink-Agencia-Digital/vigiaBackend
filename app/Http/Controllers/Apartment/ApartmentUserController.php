@@ -6,6 +6,7 @@ use App\Apartment;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ApartmentResource;
+use App\Http\Resources\UserResource;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -82,8 +83,13 @@ class ApartmentUserController extends ApiController
      * @param  \App\Apartment  $apartment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Apartment $apartment)
+    public function destroy(Apartment $apartment, User $user)
     {
-        //
+        $apartment->users()->detach($user);
+        return $this->api_success([
+            'data'      =>  ["user" => new UserResource($user), "apartment" => new ApartmentResource($apartment)],
+            'message'   => __('pages.responses.deleted'),
+            'code'      =>  201
+        ], 201);
     }
 }

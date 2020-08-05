@@ -8,7 +8,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
-use App\Mail\ForgotPassword;
+use Illuminate\Support\Str;
 use App\User;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
@@ -127,7 +127,12 @@ class UserController extends ApiController
         }
         if ($request->has("photo")) {
             Storage::delete($user->photo);
-            $user->photo = $request->photo->store('images');
+            $image = $request->photo;
+            $image = str_replace('data:image/jpeg;base64,', '', $image);
+            $image = str_replace(' ', '+', $image);
+            $imageName = Str::random(10) . '.jpeg';
+            Storage::disk('photos')->put($imageName, base64_decode($image));
+            $user->photo =  $imageName;
         }
 
         if (!$user->isDirty()) {
