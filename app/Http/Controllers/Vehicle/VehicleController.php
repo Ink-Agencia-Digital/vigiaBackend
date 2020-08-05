@@ -93,6 +93,9 @@ class VehicleController extends ApiController
         if ($request->has("color")) {
             $vehicle->color = $request->color;
         }
+        if ($request->has("plate")) {
+            $vehicle->plate = $request->plate;
+        }
 
         if (!$vehicle->isDirty()) {
             return $this->errorResponse(
