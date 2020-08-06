@@ -35,4 +35,9 @@ class Apartment extends Model
     {
         return $this->hasMany(Vehicle::class);
     }
+
+    public function tower()
+    {
+        return $this->belongsTo(Tower::class);
+    }
 }

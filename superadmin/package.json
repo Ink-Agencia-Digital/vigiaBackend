@@ -1,6 +1,6 @@
 {
-  "name": "color-admin",
-  "version": "0.0.0",
+  "name": "vigia-dashboard",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

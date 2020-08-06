@@ -5,23 +5,21 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Tower extends Model
+class Location extends Model
 {
     use SoftDeletes;
+
     protected $fillable = [
+        "complex_id",
         "name",
-        "complex_id"
+        "opening",
+        "closing"
     ];
 
     /** Relationships */
 
-    public function apartments()
+    public function reservations()
     {
-        return $this->hasMany(Apartment::class);
-    }
-
-    public function complex()
-    {
-        return $this->belongsTo(Complex::class);
+        return $this->hasMany(Reservation::class);
     }
 }

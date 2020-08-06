@@ -30,4 +30,9 @@ class Complex extends Model
     {
         return $this->hasMany(Tower::class);
     }
+
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
 }
