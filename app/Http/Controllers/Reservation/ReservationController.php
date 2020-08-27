@@ -15,9 +15,14 @@ class ReservationController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->has('date')) {
+            $reservations = Reservation::whereDate('start', $request->date)->orWhereDate('end', $request->date);
+        } else {
+            $reservations = new Reservation;
+        }
+        return $this->collectionResponse(ReservationResource::collection($this->getModel(new Reservation, [], $reservations)));
     }
 
     /**
