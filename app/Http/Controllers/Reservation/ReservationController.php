@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Reservation;
 
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ReservationResource;
 use App\Reservation;
 use Illuminate\Http\Request;
 
-class ReservationController extends Controller
+class ReservationController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -36,7 +38,14 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reservation = new Reservation;
+        $reservation->fill($request->all());
+        $reservation->saveOrFail();
+        return $this->api_success([
+            'data' => new ReservationResource($reservation),
+            'message' => __('pages.responses.created'),
+            'code' => 201
+        ], 201);
     }
 
     /**
@@ -81,6 +90,11 @@ class ReservationController extends Controller
      */
     public function destroy(Reservation $reservation)
     {
-        //
+        $reservation->delete();
+        return $this->api_success([
+            'data' => new ReservationResource($reservation),
+            'message' => __('pages.responses.deleted'),
+            'code' => 201
+        ], 201);
     }
 }

@@ -9,7 +9,7 @@ import VueBootstrap from 'bootstrap-vue'
 import VueInsProgressBar from 'vue-ins-progress-bar'
 import VueEventCalendar from 'vue-event-calendar'
 import VueSparkline from 'vue-sparklines'
-import * as VueGoogleMaps from 'vue2-google-maps'
+import * as GmapVue from 'gmap-vue'
 import Vueditor from '@agametov/vueditor'
 import VueSweetalert2 from 'vue-sweetalert2'
 import VueNotification from 'vue-notification'
@@ -65,10 +65,10 @@ Vue.use(VuePanel)
 Vue.use(VueDateTimePicker)
 Vue.use(VueGoodTable)
 Vue.use(VueFullCalendar)
-Vue.use(VueGoogleMaps, {
+Vue.use(GmapVue, {
   load: {
-    key: '',
-    libraries: 'places'
+    key: 'AIzaSyCVgemdzWO6Lqqn22A4fcg0CKPiA_ojLIw',
+    libraries: ["places", "geometry"]
   }
 })
 Vue.use(VueInsProgressBar, {

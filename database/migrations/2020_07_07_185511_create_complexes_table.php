@@ -21,6 +21,7 @@ class CreateComplexesTable extends Migration
             $table->string('lng');
             $table->string('geofence')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
