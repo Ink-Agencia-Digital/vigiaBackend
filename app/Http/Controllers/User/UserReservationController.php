@@ -17,7 +17,7 @@ class UserReservationController extends ApiController
      */
     public function index(User $user)
     {
-        return $this->collectionResponse(ReservationResource::collection($this->getModel(new Reservation, [], $user->reservations())));
+        return $this->collectionResponse(ReservationResource::collection($this->getModel(new Reservation, ['location'], $user->reservations())));
     }
 
     /**

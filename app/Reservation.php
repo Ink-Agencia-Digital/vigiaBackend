@@ -17,4 +17,11 @@ class Reservation extends Model
         'end',
         'aproved'
     ];
+
+    /** Relationship */
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
 }
