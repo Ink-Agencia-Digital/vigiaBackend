@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Complex;
 
 use App\Complex;
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TowerResource;
 use App\Tower;
 use Illuminate\Http\Request;
 
-class ComplexTowerController extends Controller
+class ComplexTowerController extends ApiController
 {
     /**
      * Display a listing of the resource.
