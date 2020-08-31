@@ -18,7 +18,7 @@ class ComplexTowerController extends Controller
     public function index(Complex $complex)
     {
         $towers = $complex->buildings();
-        return $this->collectionResponse(TowerResource::collection($this->getModel(new Tower(), [], $towers)));
+        return $this->collectionResponse(TowerResource::collection($this->getModel(new Tower, ['apartments'], $towers)));
     }
 
     /**
