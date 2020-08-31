@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user()->load(['roles', 'apartments.tower.complex']);
+    return $request->user()->load(['roles', 'apartments.tower.complex', 'complex_administrator']);
 });
 
 Route::post('oauth/token', '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');

@@ -5,7 +5,12 @@
         <legend>Información del conjunto/edificio</legend>
         <b-row class="m-t-10 m-b-10">
           <b-col md="10" offset-md="1">
-            <b-form-group class="row" label="Nombre" label-cols-md="3" label-for="register-name">
+            <b-form-group
+              class="row"
+              label="Nombre"
+              label-cols-md="3"
+              label-for="register-name"
+            >
               <b-form-input
                 id="register-name"
                 v-model="newComplex.name"
@@ -24,9 +29,7 @@
                   :value="newComplex.address"
                   :options="autocompleteOptions"
                   @place_changed="setPlace"
-                  @input="
-                                        newComplex.address = $event.target.value
-                                    "
+                  @input="newComplex.address = $event.target.value"
                 ></gmap-autocomplete>
                 <span class="input-group-btn">
                   <button class="btn btn-danger" @click="addMarker">
@@ -40,7 +43,11 @@
                 style="width:100%;  height: 400px;"
                 refs="mapa"
               >
-                <gmap-marker :draggable="true" :position="center" @dragend="markerChanged"></gmap-marker>
+                <gmap-marker
+                  :draggable="true"
+                  :position="center"
+                  @dragend="markerChanged"
+                ></gmap-marker>
                 <gmap-polygon
                   :paths="fence"
                   :draggable="true"
@@ -50,8 +57,12 @@
               </gmap-map>
             </b-form-group>
             <div class="pull-right">
-              <b-button variant="outline-primary" @click="resetRegister">Limpiar</b-button>
-              <b-button variant="warning" class="m-l-10" @click="createComplex">Crear</b-button>
+              <b-button variant="outline-primary" @click="resetRegister"
+                >Limpiar</b-button
+              >
+              <b-button variant="warning" class="m-l-10" @click="createComplex"
+                >Crear</b-button
+              >
             </div>
           </b-col>
         </b-row>
@@ -67,11 +78,11 @@ export default {
       company: {},
       newComplex: {
         company_id: null,
-        geofence: null
+        geofence: null,
       },
       center: {
         lat: 4.702208499999999,
-        lng: -74.04198969999999
+        lng: -74.04198969999999,
       },
       mapZoom: 15,
       currentPlace: null,
@@ -80,18 +91,18 @@ export default {
           { lat: 4.6970526999999995, lng: -74.13672910000001 },
           { lat: 4.6970526999999995, lng: -74.1347291 },
           { lat: 4.6990527, lng: -74.1347291 },
-          { lat: 4.6990527, lng: -74.13672910000001 }
-        ]
+          { lat: 4.6990527, lng: -74.13672910000001 },
+        ],
       ],
       autocompleteOptions: {
         componentRestrictions: { country: "co" },
-        strictBounds: true
-      }
+        strictBounds: true,
+        fields: ["formatted_address", "geometry", "address_components"],
+      },
     };
   },
   mounted() {
-    // this.geolocate();
-    // this.company = this.$store.getters.authUser.company;
+    this.geolocate();
   },
   methods: {
     updateEdited(fence) {
@@ -106,7 +117,7 @@ export default {
       // eslint-disable-next-line
       new google.maps.Geocoder().geocode(
         {
-          latLng: position
+          latLng: position,
         },
         (res, status) => {
           if (status == "OK") {
@@ -117,13 +128,14 @@ export default {
             this.$swal({
               icon: "error",
               title: "Error!",
-              text: "Error de Geolocalizacion"
+              text: "Error de Geolocalizacion",
             });
           }
         }
       );
     },
     setPlace(place) {
+      console.log(place);
       this.currentPlace = place;
       this.newComplex.address = place.formatted_address;
     },
@@ -132,26 +144,26 @@ export default {
         this.place = this.currentPlace;
         this.center = {
           lat: this.currentPlace.geometry.location.lat(),
-          lng: this.currentPlace.geometry.location.lng()
+          lng: this.currentPlace.geometry.location.lng(),
         };
         this.fence = [];
         this.fence.push([
           {
             lat: this.center.lat - 0.001,
-            lng: this.center.lng - 0.001
+            lng: this.center.lng - 0.001,
           },
           {
             lat: this.center.lat - 0.001,
-            lng: this.center.lng + 0.001
+            lng: this.center.lng + 0.001,
           },
           {
             lat: this.center.lat + 0.001,
-            lng: this.center.lng + 0.001
+            lng: this.center.lng + 0.001,
           },
           {
             lat: this.center.lat + 0.001,
-            lng: this.center.lng - 0.001
-          }
+            lng: this.center.lng - 0.001,
+          },
         ]);
         this.newComplex.geofence = this.fence;
         this.newComplex.lat = this.currentPlace.geometry.location.lat();
@@ -161,29 +173,29 @@ export default {
       }
     },
     geolocate() {
-      navigator.geolocation.getCurrentPosition(position => {
+      navigator.geolocation.getCurrentPosition((position) => {
         this.center = {
           lat: position.coords.latitude,
-          lng: position.coords.longitude
+          lng: position.coords.longitude,
         };
         this.fence = [];
         this.fence.push([
           {
             lat: this.center.lat - 0.001,
-            lng: this.center.lng - 0.001
+            lng: this.center.lng - 0.001,
           },
           {
             lat: this.center.lat - 0.001,
-            lng: this.center.lng + 0.001
+            lng: this.center.lng + 0.001,
           },
           {
             lat: this.center.lat + 0.001,
-            lng: this.center.lng + 0.001
+            lng: this.center.lng + 0.001,
           },
           {
             lat: this.center.lat + 0.001,
-            lng: this.center.lng - 0.001
-          }
+            lng: this.center.lng - 0.001,
+          },
         ]);
         this.newComplex.geofence = this.fence[0];
         this.newComplex.lat = position.coords.latitude;
@@ -198,7 +210,7 @@ export default {
         { lat: this.center.lat - 0.001, lng: this.center.lng - 0.001 },
         { lat: this.center.lat - 0.001, lng: this.center.lng + 0.001 },
         { lat: this.center.lat + 0.001, lng: this.center.lng + 0.001 },
-        { lat: this.center.lat + 0.001, lng: this.center.lng - 0.001 }
+        { lat: this.center.lat + 0.001, lng: this.center.lng - 0.001 },
       ]);
       this.newFence = this.fence[0];
       this.geocodePosition(place.latLng);
@@ -214,14 +226,14 @@ export default {
       this.$http({
         method: "POST",
         url: "/api/complexes",
-        data: this.newComplex
+        data: this.newComplex,
       })
         .then(() => {
           loader.hide();
           this.$swal({
             icon: "success",
             title: "Hecho",
-            text: "Conjunto registrado"
+            text: "Conjunto registrado",
           }).then(() => {
             this.registrationSuccessful();
           });
@@ -230,11 +242,11 @@ export default {
           loader.hide();
           this.$swal({
             icon: "error",
-            title: "Error"
+            title: "Error",
           });
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

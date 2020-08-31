@@ -36,7 +36,7 @@
           >
             <UpdateComplex
               v-if="selectedComplex"
-              :initialCategory="selectedComplex"
+              :initialComplex="selectedComplex"
               :key="updateKey"
               @resetUpdate="resetUpdate"
               @updateSuccess="updateSuccess"
@@ -83,6 +83,7 @@ export default {
   },
   methods: {
     selectComplex(complex) {
+      console.log(complex);
       this.updateKey++;
       this.selectedComplex = { ...complex };
     },

@@ -13,3 +13,5 @@ npm-debug.log
 yarn-error.log
 node_modules/
 .vscode/
+resources/views/superadmin.blade.php
+superadmin/package-lock.json

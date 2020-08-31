@@ -68,4 +68,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reservation::class);
     }
+
+    public function complex_administrator()
+    {
+        return $this->belongsToMany(Complex::class, 'users_complexes');
+    }
 }
