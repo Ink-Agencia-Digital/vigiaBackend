@@ -35,4 +35,9 @@ class Complex extends Model
     {
         return $this->hasMany(Location::class);
     }
+
+    public function reservations()
+    {
+        return $this->hasManyThrough(Reservation::class, Location::class);
+    }
 }

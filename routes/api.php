@@ -29,6 +29,7 @@ Route::resource('users.reservations', 'User\UserReservationController', ['only' 
 Route::resource('complexes', 'Complex\ComplexController', ['except' => ['create', 'edit']]);
 Route::resource('complexes.locations', 'Complex\ComplexLocationController', ['only' => ['index']]);
 Route::resource('complexes.towers', 'Complex\ComplexTowerController', ['only' => ['index']]);
+Route::resource('complexes.reservations', 'Complex\ComplexReservationController', ['only' => ['index']]);
 /** Tower */
 Route::resource('towers', 'Tower\TowerController', ['except' => ['create', 'edit']]);
 /** Apartment */
