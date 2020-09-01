@@ -99,7 +99,6 @@ export default {
     },
     updateSuccess() {
       this.$refs["complexes-list"].loadComplexes();
-      this.resetUpdate();
     }
   }
 };

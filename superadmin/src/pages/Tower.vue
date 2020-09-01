@@ -2,8 +2,8 @@
   <div>
     <!-- begin page-header -->
     <h1 class="page-header">
-      Categorias
-      <small>Admnistracion de categorias</small>
+      Torres
+      <small>Admnistracion de torres</small>
     </h1>
     <!-- end page-header -->
 
@@ -16,8 +16,8 @@
             leave-active-class="bounce-out-bck"
             mode="out-in"
           >
-            <CreateCategory
-              v-if="!selectedCategory"
+            <CreateTower
+              v-if="!selectedTower"
               :key="registerKey"
               @registrationSuccessful="registrationSuccessful"
               @resetRegister="resetRegister"
@@ -25,7 +25,7 @@
           </transition>
         </b-col>
         <b-col md="12">
-          <ListCategories ref="categories-list" @selectCategory="selectCategory" />
+          <ListTowers ref="towers-list" @selectTower="selectTower" />
         </b-col>
         <b-col md="12">
           <transition
@@ -34,9 +34,9 @@
             leave-active-class="bounce-out-bck"
             mode="out-in"
           >
-            <UpdateCategory
-              v-if="selectedCategory"
-              :initialCategory="selectedCategory"
+            <UpdateTowers
+              v-if="selectedTower"
+              :initialTower="selectedTower"
               :key="updateKey"
               @resetUpdate="resetUpdate"
               @updateSuccess="updateSuccess"
@@ -51,56 +51,56 @@
 <script>
 export default {
   components: {
-    CreateCategory: resolve => {
+    CreateTower: (resolve) => {
       import(
-        /* webpackChunkName: "components" */ "@/components/categories/CreateCategory.vue"
-      ).then(CreateCategory => {
-        resolve(CreateCategory.default);
+        /* webpackChunkName: "components" */ "@/components/towers/CreateTower.vue"
+      ).then((CreateTower) => {
+        resolve(CreateTower.default);
       });
     },
-    ListCategories: resolve => {
+    ListTowers: (resolve) => {
       import(
-        /* webpackChunkName: "components" */ "@/components/categories/ListCategories.vue"
-      ).then(ListCategories => {
-        resolve(ListCategories.default);
+        /* webpackChunkName: "components" */ "@/components/towers/ListTowers.vue"
+      ).then((ListTowers) => {
+        resolve(ListTowers.default);
       });
     },
-    UpdateCategory: resolve => {
+    UpdateTowers: (resolve) => {
       import(
-        /* webpackChunkName: "components" */ "@/components/categories/UpdateCategory.vue"
-      ).then(UpdateCategory => {
-        resolve(UpdateCategory.default);
+        /* webpackChunkName: "components" */ "@/components/towers/UpdateTowers.vue"
+      ).then((UpdateTowers) => {
+        resolve(UpdateTowers.default);
       });
-    }
+    },
   },
   data() {
     return {
-      selectedCategory: null,
+      selectedTower: null,
       registerKey: 1,
       listKey: 1,
-      updateKey: 1
+      updateKey: 1,
     };
   },
   methods: {
-    selectCategory(category) {
+    selectTower(tower) {
       this.updateKey++;
-      this.selectedCategory = { ...category };
+      this.selectedTower = { ...tower };
     },
     resetRegister() {
       this.registerKey++;
     },
     resetUpdate() {
-      this.selectedCategory = null;
+      this.selectedTower = null;
       this.updateKey++;
     },
     registrationSuccessful() {
       this.resetRegister();
-      this.$refs["categories-list"].loadCategories();
+      this.$refs["towers-list"].loadTowers();
     },
     updateSuccess() {
-      this.$refs["categories-list"].loadCategories();
-    }
-  }
+      this.$refs["towers-list"].loadTowers();
+    },
+  },
 };
 </script>
 
