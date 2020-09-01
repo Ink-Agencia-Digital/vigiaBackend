@@ -22,7 +22,11 @@ class ComplexResidentController extends ApiController
             return $query->where('roles.name', 'resident');
         })->whereHas('apartments.tower.complex', function ($query) use ($complex) {
             return $query->where('complexes.id', $complex->id);
-        });
+        })->with(['apartments' => function ($query) use ($complex) {
+            $query->whereHas('tower.complex', function ($query) use ($complex) {
+                return $query->where('complexes.id', $complex->id);
+            });
+        }]);
         return $this->collectionResponse(UserResource::collection($this->getModel(new User, [], $users)));
     }
 
