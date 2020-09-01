@@ -83,7 +83,6 @@ export default {
   },
   methods: {
     selectComplex(complex) {
-      console.log(complex);
       this.updateKey++;
       this.selectedComplex = { ...complex };
     },
@@ -100,6 +99,7 @@ export default {
     },
     updateSuccess() {
       this.$refs["complexes-list"].loadComplexes();
+      this.resetUpdate();
     }
   }
 };

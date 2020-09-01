@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import PageOptions from '../../config/PageOptions.vue'
+import PageOptions from '@/config/PageOptions.vue'
 
 export default {
 	name: 'SidebarNavProfile',

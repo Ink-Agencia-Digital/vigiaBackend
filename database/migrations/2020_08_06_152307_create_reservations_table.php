@@ -20,7 +20,7 @@ class CreateReservationsTable extends Migration
             $table->string('event');
             $table->dateTime('start');
             $table->dateTime('end');
-            $table->boolean('aproved')->default(false);
+            $table->integer('aproved')->default(0);
             $table->timestamps();
             $table->softDeletes();
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");

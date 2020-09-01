@@ -9,6 +9,12 @@ class Reservation extends Model
 {
     use SoftDeletes;
 
+    public const STATES = [
+        0 => "espera",
+        1 => "aceptado",
+        2 => "rechazado"
+    ];
+
     protected $fillable = [
         'user_id',
         'location_id',
@@ -28,5 +34,12 @@ class Reservation extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /** Accesor */
+
+    public function getAprovedAttribute()
+    {
+        return self::STATES[$this->aproved];
     }
 }

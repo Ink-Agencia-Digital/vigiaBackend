@@ -96,7 +96,7 @@ export default {
       this.$swal({
         title: "Está seguro?",
         text: "Estos cambios no podran ser revertidos",
-        type: "warning",
+        icon: "warning",
         showCancelButton: true,
       }).then((response) => {
         if (response.value) {
@@ -108,7 +108,7 @@ export default {
             .then(() => {
               this.$swal({
                 title: "Hecho!",
-                type: "success",
+                icon: "success",
               }).then(() => {
                 this.loadComplexes();
                 loader.hide();
@@ -117,7 +117,7 @@ export default {
             .catch((error) => {
               this.$swal({
                 title: "Error!",
-                type: "error",
+                icon: "error",
                 text: error.data.error,
               }).then(() => {
                 loader.hide();
@@ -149,7 +149,7 @@ export default {
           this.$swal({
             title: "Error",
             text: "Error cargando los datos",
-            type: "error",
+            icon: "error",
           });
         });
     },

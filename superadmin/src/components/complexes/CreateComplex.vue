@@ -165,7 +165,7 @@ export default {
             lng: this.center.lng - 0.001,
           },
         ]);
-        this.newComplex.geofence = this.fence;
+        this.newComplex.geofence = this.fence[0];
         this.newComplex.lat = this.currentPlace.geometry.location.lat();
         this.newComplex.lng = this.currentPlace.geometry.location.lng();
         this.mapZoom = 15;

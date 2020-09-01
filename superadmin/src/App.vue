@@ -32,26 +32,26 @@
 </template>
 
 <script>
-import PageOptions from "./config/PageOptions.vue";
+import PageOptions from "@/config/PageOptions.vue";
 
 export default {
   name: "app",
   components: {
     Sidebar: resolve =>
       import(
-        /* webpackChunkName: "components" */ "@/components/sidebar/Sidebar.vue"
+        /* webpackChunkName: "components" */ "@/components/base/sidebar/Sidebar.vue"
       ).then(Sidebar => {
         resolve(Sidebar.default);
       }),
     Header: resolve =>
       import(
-        /* webpackChunkName: "components" */ "@/components/header/Header.vue"
+        /* webpackChunkName: "components" */ "@/components/base/header/Header.vue"
       ).then(Header => {
         resolve(Header.default);
       }),
     Footer: resolve =>
       import(
-        /* webpackChunkName: "components" */ "@/components/footer/Footer.vue"
+        /* webpackChunkName: "components" */ "@/components/base/footer/Footer.vue"
       ).then(Footer => {
         resolve(Footer.default);
       })

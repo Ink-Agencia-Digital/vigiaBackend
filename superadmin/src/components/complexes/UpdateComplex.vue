@@ -49,7 +49,7 @@
                   @dragend="markerChanged"
                 ></gmap-marker>
                 <gmap-polygon
-                  :paths="initialFence"
+                  :paths="fence"
                   :draggable="true"
                   :editable="true"
                   @paths_changed="updateEdited($event)"
@@ -85,7 +85,7 @@ export default {
         lat: parseFloat(this.initialComplex.lat),
         lng: parseFloat(this.initialComplex.lng),
       },
-      initialFence: [this.initialComplex.geofence],
+      fence: [this.initialComplex.geofence],
       autocompleteOptions: {
         componentRestrictions: { country: "co" },
         strictBounds: true,
@@ -103,16 +103,16 @@ export default {
         .then(() => {
           loader.hide();
           this.$swal({
-            type: "success",
+            icon: "success",
             title: "Hecho!",
           }).then(() => {
-            this.$emit("updateSuccesful");
+            this.$emit("updateSuccess");
           });
         })
         .catch(() => {
           loader.hide();
           this.$swal({
-            type: "error",
+            icon: "error",
             title: "Error!",
           });
         });
@@ -139,7 +139,7 @@ export default {
             this.complex.lng = res[0].geometry.location.lng();
           } else {
             this.$swal({
-              type: "error",
+              icon: "error",
               title: "Error!",
               text: "Error de Geolocalizacion",
             });
@@ -177,7 +177,7 @@ export default {
             lng: this.center.lng - 0.001,
           },
         ]);
-        this.complex.geofence = this.fence;
+        this.complex.geofence = this.fence[0];
         this.complex.lat = this.currentPlace.geometry.location.lat();
         this.complex.lng = this.currentPlace.geometry.location.lng();
         this.mapZoom = 15;
@@ -224,7 +224,7 @@ export default {
         { lat: this.center.lat + 0.001, lng: this.center.lng + 0.001 },
         { lat: this.center.lat + 0.001, lng: this.center.lng - 0.001 },
       ]);
-      this.newFence = this.fence[0];
+      this.complex.geofence = this.fence[0];
       this.geocodePosition(place.latLng);
     },
     resetUpdate() {

@@ -72,7 +72,7 @@
 <script>
 import SidebarNav from "./SidebarNav.vue";
 import SidebarNavList from "./SidebarNavList.vue";
-import PageOptions from "../../config/PageOptions.vue";
+import PageOptions from "@/config/PageOptions.vue";
 
 export default {
   name: "Sidebar",
