@@ -40,6 +40,6 @@ class Reservation extends Model
 
     public function getAprovedAttribute()
     {
-        return self::STATES[$this->aproved];
+        return self::STATES[$this->attributes["aproved"]];
     }
 }
