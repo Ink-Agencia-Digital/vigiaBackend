@@ -18,7 +18,7 @@ class ComplexReservationController extends ApiController
      */
     public function index(Complex $complex)
     {
-        return $this->collectionResponse(ReservationResource::collection($this->getModel(new Reservation, [], $complex->reservations())));
+        return $this->collectionResponse(ReservationResource::collection($this->getModel(new Reservation, ['user', 'location'], $complex->reservations())));
     }
 
     /**
