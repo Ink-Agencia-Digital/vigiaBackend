@@ -84,7 +84,39 @@ class ReservationController extends ApiController
      */
     public function update(Request $request, Reservation $reservation)
     {
-        //
+        if ($reservation->has("user_id")) {
+            $reservation->user_id = $reservation->user_id;
+        }
+        if ($reservation->has("location_id")) {
+            $reservation->location_id = $reservation->location_id;
+        }
+        if ($reservation->has("event")) {
+            $reservation->event = $reservation->event;
+        }
+        if ($reservation->has("start")) {
+            $reservation->start = $reservation->start;
+        }
+        if ($reservation->has("end")) {
+            $reservation->end = $reservation->end;
+        }
+        if ($reservation->has("aproved")) {
+            $reservation->aproved = $reservation->aproved;
+        }
+        
+        if (!$reservation->isDirty()) {
+            return $this->errorResponse(
+                'Se debe especificar al menos un valor diferente para actualizar',
+                422
+            );
+        }
+
+        $reservation->saveOrFail();
+
+        return $this->api_success([
+            'data'      =>  new ReservationResource($reservation),
+            'message'   => __('pages.responses.updated'),
+            'code'      =>  201
+        ], 201);
     }
 
     /**
