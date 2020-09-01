@@ -15,7 +15,7 @@ class CreateUsersComplexesTable extends Migration
     {
         Schema::create('users_complexes', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('complex_id')->unsigned()->unique();
+            $table->bigInteger('complex_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign("complex_id")->references("id")->on("complexes")->onDelete("cascade");
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");

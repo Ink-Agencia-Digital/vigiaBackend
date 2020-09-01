@@ -30,6 +30,7 @@ Route::resource('complexes', 'Complex\ComplexController', ['except' => ['create'
 Route::resource('complexes.locations', 'Complex\ComplexLocationController', ['only' => ['index']]);
 Route::resource('complexes.towers', 'Complex\ComplexTowerController', ['only' => ['index']]);
 Route::resource('complexes.reservations', 'Complex\ComplexReservationController', ['only' => ['index']]);
+Route::resource('complexes.employees', 'Complex\ComplexEmployeeController', ['only' => ['index']]);
 /** Tower */
 Route::resource('towers', 'Tower\TowerController', ['except' => ['create', 'edit']]);
 /** Apartment */

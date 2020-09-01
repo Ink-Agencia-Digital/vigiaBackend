@@ -4,12 +4,11 @@ namespace App\Http\Controllers\Complex;
 
 use App\Complex;
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Controllers\Controller;
-use App\Http\Resources\TowerResource;
-use App\Tower;
+use App\Http\Resources\UserResource;
+use App\User;
 use Illuminate\Http\Request;
 
-class ComplexTowerController extends ApiController
+class ComplexEmployeeController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +17,7 @@ class ComplexTowerController extends ApiController
      */
     public function index(Complex $complex)
     {
-        $towers = $complex->towers();
-        return $this->collectionResponse(TowerResource::collection($this->getModel(new Tower, ['apartments.users'], $towers)));
+        return $this->collectionResponse(UserResource::collection($this->getModel(new User, [], $complex->employees())));
     }
 
     /**

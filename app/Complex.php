@@ -40,4 +40,11 @@ class Complex extends Model
     {
         return $this->hasManyThrough(Reservation::class, Location::class);
     }
+
+    public function employees()
+    {
+        return $this->belongsToMany(User::class, 'users_complexes')->whereHas('roles', function ($query) {
+            return $query->where('roles.name', 'employee');
+        });
+    }
 }
