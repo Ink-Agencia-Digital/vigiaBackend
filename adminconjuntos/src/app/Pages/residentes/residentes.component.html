@@ -1,0 +1,77 @@
+<div class="image">
+    <mat-card class="ejemplo-tarjeta">
+        <div *ngIf="infoConjunto">
+
+            <mat-card-header>
+                <div *ngFor="let inf of infoConjunto">
+                    <mat-card-title><b>Conjunto:</b>&nbsp; {{inf.name}}</mat-card-title>
+                    <mat-card-subtitle><b>Dirección:</b>&nbsp; {{inf.address}}</mat-card-subtitle>
+                    <mat-card-subtitle><b>Empleados</b></mat-card-subtitle>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+
+
+
+                <mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 102%;">
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef> ID. </mat-header-cell>
+                        <mat-cell class="Subtitle-css" *matCellDef="let element"> {{element.id}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="apartments">
+                        <mat-header-cell *matHeaderCellDef> Apartamento </mat-header-cell>
+                        <mat-cell class="Subtitle-css" *matCellDef="let element;"> {{element.apartments[0].name}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+                        <mat-cell class="Subtitle-css" *matCellDef="let element"> {{element.name}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="lastname">
+                        <mat-header-cell *matHeaderCellDef> Apellido </mat-header-cell>
+                        <mat-cell class="Subtitle-css" *matCellDef="let element"> {{element.lastname}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="email">
+                        <mat-header-cell *matHeaderCellDef> Correo </mat-header-cell>
+                        <mat-cell class="Subtitle-css" *matCellDef="let element"> {{element.email}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="ice">
+                        <mat-header-cell *matHeaderCellDef> Contado de Emergencia </mat-header-cell>
+                        <mat-cell class="Subtitle-css" *matCellDef="let element"> {{element.ice}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="identification">
+                        <mat-header-cell *matHeaderCellDef> Identificación </mat-header-cell>
+                        <mat-cell class="Subtitle-css" *matCellDef="let element"> {{element.identification}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="phone">
+                        <mat-header-cell *matHeaderCellDef> Celular </mat-header-cell>
+                        <mat-cell class="Subtitle-css" *matCellDef="let element"> {{element.phone}} </mat-cell>
+                    </ng-container>
+
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+
+            </mat-card-content>
+        </div>
+
+        <mat-card-actions>
+
+        </mat-card-actions>
+    </mat-card>
+</div>

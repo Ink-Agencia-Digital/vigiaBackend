@@ -1,0 +1,40 @@
+<div class="image">
+    <mat-card class="ejemplo-tarjeta">
+        <div>
+            <mat-card-header>
+            </mat-card-header>
+            <mat-card-content>
+                <img src="https://www.shareicon.net/data/512x512/2017/01/06/868320_people_512x512.png" alt="Avatar" class="avatar">
+                <br>
+                <br>
+                <table class="example-full-width" cellspacing="0">
+                    <tr>
+                        <td>
+                            <mat-form-field [style.width.px]=327>
+                                    <input matInput placeholder="Correo" 
+                                    pattern="^[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+                                    required [(ngModel)]="usuario" #email>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <mat-form-field [style.width.px]=327>
+                                <input type="password" matInput 
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                placeholder="Contraseña" required
+                                [(ngModel)]="contrasena" #contra>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+
+            </mat-card-content>
+        </div>
+        <mat-card-actions>
+            <button mat-raised-button [disabled]="!contra.validity.valid || !email.validity.valid" class="buttonCss" style="margin-bottom: 35px;" color="primary" (click)="iniciarsesion()">Ingresar</button>
+            <br>
+        </mat-card-actions>
+    </mat-card>
+</div>

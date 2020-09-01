@@ -42,6 +42,15 @@ const routes = [
       ),
   },
   {
+    path: "/apartments",
+    component: (resolve) =>
+      import(/* webpackChunkName: "Apartment" */ "@/pages/Apartment.vue").then(
+        (Apartment) => {
+          resolve(Apartment.default);
+        }
+      ),
+  },
+  {
     path: "/404",
     component: (resolve) =>
       import(/* webpackChunkName: "Error" */ "@/pages/Error404.vue").then(

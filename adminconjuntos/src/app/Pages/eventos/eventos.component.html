@@ -1,0 +1,79 @@
+<div class="image">
+    <mat-card class="ejemplo-tarjeta">
+        <div *ngIf="infoConjunto">
+
+            <mat-card-header>
+                <div *ngFor="let inf of infoConjunto">
+                    <mat-card-title><b>Conjunto:</b>&nbsp; {{inf.name}}</mat-card-title>
+                    <mat-card-subtitle><b>Dirección:</b>&nbsp; {{inf.address}}</mat-card-subtitle>
+                    <mat-card-subtitle><b>Eventos</b></mat-card-subtitle>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+
+
+
+                <mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 102%;">
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef> ID. </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="event">
+                        <mat-header-cell *matHeaderCellDef> Evento </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.event}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="start">
+                        <mat-header-cell *matHeaderCellDef> Inicio Evento </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.start}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="end">
+                        <mat-header-cell *matHeaderCellDef> Fin evento </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.end}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="user">
+                        <mat-header-cell *matHeaderCellDef> Responsable </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.user.name}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="location">
+                        <mat-header-cell *matHeaderCellDef> Lugar </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.location.name}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="aprovedEstado">
+                        <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.aproved}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="acciones">
+                        <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                        <mat-cell *matCellDef="let row">
+                            <button mat-button color="primary" (click)="abrirDetalle(row)">
+                                <mat-icon>insert_drive_file</mat-icon>
+                            </button>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+
+            </mat-card-content>
+        </div>
+
+        <mat-card-actions>
+
+        </mat-card-actions>
+    </mat-card>
+</div>

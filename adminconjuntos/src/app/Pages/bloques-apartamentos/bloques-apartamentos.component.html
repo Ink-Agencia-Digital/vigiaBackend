@@ -1,0 +1,59 @@
+<div class="image">
+    <mat-card class="ejemplo-tarjeta">
+        <div *ngIf="infoConjunto">
+
+            <mat-card-header>
+                <div *ngFor="let inf of infoConjunto">
+                    <mat-card-title><b>Conjunto:</b>&nbsp;  {{inf.name}}</mat-card-title>
+                    <mat-card-subtitle><b>Dirección:</b>&nbsp; {{inf.address}}</mat-card-subtitle>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+
+                <mat-accordion class="example-headers-align" multi *ngFor="let com of tower">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{com.name}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Apartemos y torre
+                                <mat-icon>account_circle</mat-icon>
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="id">
+                                <mat-header-cell *matHeaderCellDef> ID. </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                            </ng-container>
+
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="name">
+                                <mat-header-cell *matHeaderCellDef> Apartamento </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                            </ng-container>
+
+                            <!-- Weight Column -->
+                            <ng-container matColumnDef="tower_id">
+                                <mat-header-cell *matHeaderCellDef> Torre </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{com.name}} </mat-cell>
+                            </ng-container>
+
+
+                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                        </mat-table>
+
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+            </mat-card-content>
+        </div>
+
+        <mat-card-actions>
+
+        </mat-card-actions>
+    </mat-card>
+</div>

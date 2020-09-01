@@ -1,0 +1,43 @@
+<div>
+    <div [hidden]="true">
+        <mat-form-field style="width: 450px;">
+            <input matInput placeholder="Id" [(ngModel)]="consult.id" [disabled]="true">
+        </mat-form-field>
+    </div>
+    <br>
+    <div>
+        <mat-form-field  style="width: 450px;">
+            <input matInput placeholder="Evento" [(ngModel)]="consult.event" [disabled]="true" >
+        </mat-form-field>
+    </div>
+    <br>
+    <div >
+        <mat-form-field style="width: 450px;">
+            <input matInput placeholder="Nombre" [(ngModel)]="consult.user.name" [disabled]="true">
+        </mat-form-field>
+    </div>
+    <div >
+        <mat-form-field style="width: 450px;">
+            <input matInput placeholder="Apellido" [(ngModel)]="consult.user.lastname" [disabled]="true">
+        </mat-form-field>
+    </div>
+    <br>
+    <div >
+        <mat-form-field style="width: 450px;">
+            <input matInput placeholder="Inicio" [(ngModel)]="consult.start" [disabled]="true">
+        </mat-form-field>
+    </div>
+    <br>
+    <div >
+        <mat-form-field style="width: 450px;">
+            <input matInput placeholder="Fin" [(ngModel)]="consult.end" [disabled]="true">
+        </mat-form-field>
+    </div>
+    <br>
+</div>
+
+<button mat-raised-button color="primary" style="width: 200px;" (click)="aprobar()">Aprobar</button> &nbsp;&nbsp;
+<button mat-raised-button color="primary" style="width: 200px;" (click)="rechazar()">Rechazar</button>
+<br>
+<br>
+<button mat-raised-button color="primary" style="float: right;" (click)="cancelar()">Cancelar</button>

@@ -1,0 +1,85 @@
+mat-card {
+    max-width: 900px;
+    margin: 8em auto;
+    text-align: center;
+    background-color: rgba(207, 207, 207, 0.89);
+    border-radius: 8px;
+}
+
+mat-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.example-full-width{
+    margin-top: 10%;
+}
+
+.Inputcss{
+    width: 300px;
+}
+
+.titleLog {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-left: 150px;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.fieldCss{
+    width: 100%;
+}
+
+.mat-form-field-infix{
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 100%;
+}
+
+.buttonCss{
+    width: 85%;
+    margin-bottom: 35px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    height: calc(1.5em + 0.75rem + 4px);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.975rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fbfbfb;
+    background-color: #253764;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.example-action-buttons {
+    padding-bottom: 20px;
+  }
+  
+  .example-headers-align{
+    width: 580px;
+  }
+
+  .example-headers-align .mat-expansion-panel-header-title,
+  .example-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+   
+  }
+  
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .example-headers-align .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }

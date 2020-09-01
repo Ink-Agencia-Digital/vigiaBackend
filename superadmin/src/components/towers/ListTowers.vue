@@ -113,12 +113,14 @@ export default {
             url: "/api/towers/" + tower_id,
           })
             .then(() => {
+              loader.hide();
               this.$swal({
                 title: "Eliminado!",
                 icon: "success",
               }).then(() => {
-                this.loadTowers();
-                loader.hide();
+                this.towers = this.towers.filter((tower) => {
+                  return tower.id !== tower_id;
+                });
               });
             })
             .catch((error) => {

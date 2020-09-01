@@ -2,8 +2,8 @@
   <div>
     <!-- begin page-header -->
     <h1 class="page-header">
-      Categorias
-      <small>Admnistracion de categorias</small>
+      Apartamentos
+      <small>Admnistracion de apartamentos</small>
     </h1>
     <!-- end page-header -->
 
@@ -17,7 +17,7 @@
             mode="out-in"
           >
             <CreateCategory
-              v-if="!selectedCategory"
+              v-if="!selectedApartment"
               :key="registerKey"
               @registrationSuccessful="registrationSuccessful"
               @resetRegister="resetRegister"
@@ -25,7 +25,10 @@
           </transition>
         </b-col>
         <b-col md="12">
-          <ListCategories ref="categories-list" @selectCategory="selectCategory" />
+          <ListCategories
+            ref="apartments-list"
+            @selectApartment="selectApartment"
+          />
         </b-col>
         <b-col md="12">
           <transition
@@ -35,8 +38,8 @@
             mode="out-in"
           >
             <UpdateCategory
-              v-if="selectedCategory"
-              :initialCategory="selectedCategory"
+              v-if="selectedApartment"
+              :initialApartment="selectedApartment"
               :key="updateKey"
               @resetUpdate="resetUpdate"
               @updateSuccess="updateSuccess"
@@ -51,56 +54,56 @@
 <script>
 export default {
   components: {
-    CreateCategory: resolve => {
+    CreateApartment: (resolve) => {
       import(
-        /* webpackChunkName: "components" */ "@/components/categories/CreateCategory.vue"
-      ).then(CreateCategory => {
-        resolve(CreateCategory.default);
+        /* webpackChunkName: "components" */ "@/components/apartments/CreateApartment.vue"
+      ).then((CreateApartment) => {
+        resolve(CreateApartment.default);
       });
     },
-    ListCategories: resolve => {
+    ListApartments: (resolve) => {
       import(
-        /* webpackChunkName: "components" */ "@/components/categories/ListCategories.vue"
-      ).then(ListCategories => {
-        resolve(ListCategories.default);
+        /* webpackChunkName: "components" */ "@/components/apartments/ListApartments.vue"
+      ).then((ListApartments) => {
+        resolve(ListApartments.default);
       });
     },
-    UpdateCategory: resolve => {
+    UpdateApartment: (resolve) => {
       import(
-        /* webpackChunkName: "components" */ "@/components/categories/UpdateCategory.vue"
-      ).then(UpdateCategory => {
-        resolve(UpdateCategory.default);
+        /* webpackChunkName: "components" */ "@/components/apartments/UpdateApartment.vue"
+      ).then((UpdateApartment) => {
+        resolve(UpdateApartment.default);
       });
-    }
+    },
   },
   data() {
     return {
-      selectedCategory: null,
+      selectedApartment: null,
       registerKey: 1,
       listKey: 1,
-      updateKey: 1
+      updateKey: 1,
     };
   },
   methods: {
-    selectCategory(category) {
+    selectApartment(apartments) {
       this.updateKey++;
-      this.selectedCategory = { ...category };
+      this.selectedApartment = { ...apartments };
     },
     resetRegister() {
       this.registerKey++;
     },
     resetUpdate() {
-      this.selectedCategory = null;
+      this.selectedApartment = null;
       this.updateKey++;
     },
     registrationSuccessful() {
       this.resetRegister();
-      this.$refs["categories-list"].loadCategories();
+      this.$refs["apartments-list"].loadApartments();
     },
     updateSuccess() {
-      this.$refs["categories-list"].loadCategories();
-    }
-  }
+      this.$refs["apartments-list"].loadApartments();
+    },
+  },
 };
 </script>
 

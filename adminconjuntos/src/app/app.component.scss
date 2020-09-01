@@ -1,0 +1,25 @@
+.example-container{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.example-sidenav-container{
+    flex: 1;
+}
+
+.example-spacer{
+    flex: 1 1 auto;
+}
+
+.image{
+    display:block;
+    width:100%;
+    height:100%;
+    background: url('https://i.ibb.co/J5mZqz6/Copy-of-banner-2.png') no-repeat center !important;
+    background-size: cover;
+}

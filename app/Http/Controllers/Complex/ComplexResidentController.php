@@ -23,7 +23,7 @@ class ComplexResidentController extends ApiController
         })->whereHas('apartments.tower.complex', function ($query) use ($complex) {
             return $query->where('complexes.id', $complex->id);
         })->with(['apartments' => function ($query) use ($complex) {
-            $query->whereHas('tower.complex', function ($query) use ($complex) {
+            return $query->whereHas('tower.complex', function ($query) use ($complex) {
                 return $query->where('complexes.id', $complex->id);
             });
         }]);

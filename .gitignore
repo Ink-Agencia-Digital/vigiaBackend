@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/superadmin
+/public/adminconjuntos
 /storage/*.key
 /vendor
 .env
