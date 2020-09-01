@@ -84,23 +84,23 @@ class ReservationController extends ApiController
      */
     public function update(Request $request, Reservation $reservation)
     {
-        if ($reservation->has("user_id")) {
-            $reservation->user_id = $reservation->user_id;
+        if ($request->has("user_id")) {
+            $reservation->user_id = $request->user_id;
         }
-        if ($reservation->has("location_id")) {
-            $reservation->location_id = $reservation->location_id;
+        if ($request->has("location_id")) {
+            $reservation->location_id = $request->location_id;
         }
-        if ($reservation->has("event")) {
-            $reservation->event = $reservation->event;
+        if ($request->has("event")) {
+            $reservation->event = $request->event;
         }
-        if ($reservation->has("start")) {
+        if ($request->has("start")) {
             $reservation->start = $reservation->start;
         }
-        if ($reservation->has("end")) {
-            $reservation->end = $reservation->end;
+        if ($request->has("end")) {
+            $reservation->end = $request->end;
         }
-        if ($reservation->has("aproved")) {
-            $reservation->aproved = $reservation->aproved;
+        if ($request->has("aproved")) {
+            $reservation->aproved = $request->aproved;
         }
         
         if (!$reservation->isDirty()) {
