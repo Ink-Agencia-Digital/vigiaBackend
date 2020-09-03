@@ -18,7 +18,7 @@ class TowerApartmentController extends ApiController
     public function index(Tower $tower)
     {
         $apartments = $tower->apartments();
-        return $this->collectionResponse(ApartmentResource::collection($this->getModel(new Apartment, [], $apartments)));
+        return $this->collectionResponse(ApartmentResource::collection($this->getModel(new Apartment, ['users', 'tower.complex'], $apartments)));
     }
 
     /**

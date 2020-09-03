@@ -16,7 +16,7 @@
             leave-active-class="bounce-out-bck"
             mode="out-in"
           >
-            <CreateCategory
+            <CreateApartment
               v-if="!selectedApartment"
               :key="registerKey"
               @registrationSuccessful="registrationSuccessful"
@@ -25,7 +25,7 @@
           </transition>
         </b-col>
         <b-col md="12">
-          <ListCategories
+          <ListApartments
             ref="apartments-list"
             @selectApartment="selectApartment"
           />
@@ -37,7 +37,7 @@
             leave-active-class="bounce-out-bck"
             mode="out-in"
           >
-            <UpdateCategory
+            <UpdateApartment
               v-if="selectedApartment"
               :initialApartment="selectedApartment"
               :key="updateKey"
@@ -56,21 +56,21 @@ export default {
   components: {
     CreateApartment: (resolve) => {
       import(
-        /* webpackChunkName: "components" */ "@/components/apartments/CreateApartment.vue"
+        /* webpackChunkName: "Apartment" */ "@/components/apartments/CreateApartment.vue"
       ).then((CreateApartment) => {
         resolve(CreateApartment.default);
       });
     },
     ListApartments: (resolve) => {
       import(
-        /* webpackChunkName: "components" */ "@/components/apartments/ListApartments.vue"
+        /* webpackChunkName: "Apartment" */ "@/components/apartments/ListApartments.vue"
       ).then((ListApartments) => {
         resolve(ListApartments.default);
       });
     },
     UpdateApartment: (resolve) => {
       import(
-        /* webpackChunkName: "components" */ "@/components/apartments/UpdateApartment.vue"
+        /* webpackChunkName: "Apartment" */ "@/components/apartments/UpdateApartment.vue"
       ).then((UpdateApartment) => {
         resolve(UpdateApartment.default);
       });

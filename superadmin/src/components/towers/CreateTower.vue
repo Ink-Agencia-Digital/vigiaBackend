@@ -57,7 +57,6 @@ export default {
     return {
       newTower: {},
       complexes: [],
-      company: {},
     };
   },
   methods: {

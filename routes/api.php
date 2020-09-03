@@ -34,6 +34,7 @@ Route::resource('complexes.employees', 'Complex\ComplexEmployeeController', ['on
 Route::resource('complexes.residents', 'Complex\ComplexResidentController', ['only' => ['index']]);
 /** Tower */
 Route::resource('towers', 'Tower\TowerController', ['except' => ['create', 'edit']]);
+Route::resource('towers.apartments', 'Tower\TowerApartmentController', ['only' => ['index']]);
 /** Apartment */
 Route::resource('apartments', 'Apartment\ApartmentController', ['except' => ['create', 'edit']]);
 Route::resource('apartments.codes', 'Apartment\ApartmentCodeController', ['only' => ['index']]);

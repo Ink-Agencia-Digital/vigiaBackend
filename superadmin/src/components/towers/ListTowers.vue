@@ -95,7 +95,6 @@ export default {
         dropdownAllowAll: false,
       },
       selectedComplex: null,
-      company: {},
     };
   },
   methods: {

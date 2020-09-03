@@ -75,9 +75,7 @@
 export default {
   data() {
     return {
-      company: {},
       newComplex: {
-        company_id: null,
         geofence: null,
       },
       center: {
