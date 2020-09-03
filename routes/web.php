@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/{any?}', function () {
-    return view('superadmin');
+    return view('reception');
 })->where('any', '^(?!storage).*$')->name('dashboard');;
 

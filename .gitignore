@@ -3,6 +3,7 @@
 /public/storage
 /public/superadmin
 /public/adminconjuntos
+/public/reception
 /storage/*.key
 /vendor
 .env
@@ -16,3 +17,4 @@ node_modules/
 .vscode/
 resources/views/superadmin.blade.php
 superadmin/package-lock.json
+resources/views/reception.blade.php

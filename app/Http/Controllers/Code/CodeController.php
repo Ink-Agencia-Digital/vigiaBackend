@@ -19,9 +19,9 @@ class CodeController extends ApiController
         if (request()->has('code')) {
             $code = Code::where('code', request()->code)->firstOrfail();
             $code->delete();
-            return $this->singleResponse(new CodeResource($code));
+            return $this->singleResponse(new CodeResource($code->load(["user", 'apartment.tower'])));
         } else {
-            $this->collectionResponse(CodeResource::collection($this->getModel(new Code, [])));
+            return $this->collectionResponse(CodeResource::collection($this->getModel(new Code, [])));
         }
     }
 
@@ -59,9 +59,9 @@ class CodeController extends ApiController
             return $random_string;
         }
 
-        $code->code = generate_string($permitted_chars, 5);
+        $code->code = generate_string($permitted_chars, 10);
         while (Code::where('code', $code->code)->first()) {
-            $code->code = generate_string($permitted_chars, 5);
+            $code->code = generate_string($permitted_chars, 10);
         }
         $code->saveOrFail();
 
