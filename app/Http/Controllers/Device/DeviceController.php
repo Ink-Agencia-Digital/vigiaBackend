@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Apartment;
+namespace App\Http\Controllers\Device;
 
-use App\Apartment;
-use App\Code;
+use App\Device;
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Resources\CodeResource;
+use App\Http\Requests\StoreDeviceRequest;
+use App\Http\Resources\DeviceResource;
+use App\User;
 use Illuminate\Http\Request;
 
-class ApartmentCodeController extends ApiController
+class DeviceController extends ApiController
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Apartment $apartment)
+    public function index()
     {
-        $codes = $apartment->codes();
-        return $this->collectionResponse(CodeResource::collection($this->getModel(new Code, [], $codes)));
+        //
     }
 
     /**
@@ -39,16 +39,27 @@ class ApartmentCodeController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        $user = User::findOrFail($request->user_id);
+        $user->devices()->delete();
+
+
+        $device = new Device;
+        $device->fill($request->all());
+        $device->saveOrFail();
+        return $this->api_success([
+            'data' => new DeviceResource($device),
+            'message' => __('pages.responses.created'),
+            'code' => 201
+        ], 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Apartment  $apartment
+     * @param  \App\Device  $device
      * @return \Illuminate\Http\Response
      */
-    public function show(Apartment $apartment)
+    public function show(Device $device)
     {
         //
     }
@@ -56,10 +67,10 @@ class ApartmentCodeController extends ApiController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Apartment  $apartment
+     * @param  \App\Device  $device
      * @return \Illuminate\Http\Response
      */
-    public function edit(Apartment $apartment)
+    public function edit(Device $device)
     {
         //
     }
@@ -68,10 +79,10 @@ class ApartmentCodeController extends ApiController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Apartment  $apartment
+     * @param  \App\Device  $device
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Apartment $apartment)
+    public function update(Request $request, Device $device)
     {
         //
     }
@@ -79,11 +90,16 @@ class ApartmentCodeController extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Apartment  $apartment
+     * @param  \App\Device  $device
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Apartment $apartment)
+    public function destroy(Device $device)
     {
-        //
+        $device->delete();
+        return $this->api_success([
+            'data' => new DeviceResource($device),
+            'message' => __('pages.responses.deleted'),
+            'code' => 201
+        ], 201);
     }
 }

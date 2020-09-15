@@ -73,4 +73,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Complex::class, 'users_complexes');
     }
+
+    public function devices()
+    {
+        return $this->hasMany(Device::class);
+    }
 }

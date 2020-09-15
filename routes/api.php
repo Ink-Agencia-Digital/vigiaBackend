@@ -52,3 +52,7 @@ Route::resource('locations', 'Location\LocationController', ['except' => ['creat
 Route::resource('locations.reservations', 'Location\LocationReservationController', ['only' => ['index']]);
 /** Reservation */
 Route::resource('reservations', 'Reservation\ReservationController', ['except' => ['create', 'edit']]);
+/**
+ * Devices
+ */
+Route::resource('devices', 'Device\DeviceController', ['except' => ['create', 'edit']]);

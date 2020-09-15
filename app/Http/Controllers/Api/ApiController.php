@@ -142,7 +142,7 @@ class ApiController extends Controller
             }
 
             $builder = ($this->modelHasColumn($column, $model->getFillable()))
-                ? $builder->where($column, 'LIKE', '%' . $value . '%')
+                ? $builder->where($column, 'LIKE', $value)
                 : $builder;
         }
         if (count($relations) > 0) {
