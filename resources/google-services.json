@@ -1,40 +1,12 @@
 {
-  "project_info": {
-    "project_number": "240894821977",
-    "firebase_url": "https://vigia-78b54.firebaseio.com",
-    "project_id": "vigia-78b54",
-    "storage_bucket": "vigia-78b54.appspot.com"
-  },
-  "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:240894821977:android:5c0729f5020d0fd7abd348",
-        "android_client_info": {
-          "package_name": "com.vigia.app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "240894821977-kr6an5lb7ao7c2oenrm9najiq6ftdval.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyD1trTqYDoK35d_rNPspgi1tu6VsJ4M2ow"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "240894821977-kr6an5lb7ao7c2oenrm9najiq6ftdval.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    }
-  ],
-  "configuration_version": "1"
+  "type": "service_account",
+  "project_id": "gamescol-1540760932027",
+  "private_key_id": "24add175be6fee38f2f028fb3471f60d2547142b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC7Z9SLyDCzV46F\nUKA3u10GpxwXLzDJLcVaMOaRAvhTi8oSJM2xwMEqw4TM+7h+LjtplxrYGH8fEyWK\nPdNa9LL9GBICeziAwt+1sddgGdf1QUx3uR2lGWLbQUk+UINw0No+aPOp2KsfghW+\n3P4L2mu0jUV3igKgv8Pa+u5YwhjV6wsc2vcgCox2qJ4QYiZ/VpHNi7a2BTKyR/a2\nHcLRLk/c5QLxSgWfWDIQq4crtmXFkcRALvl+W+6KbsmdH+5fR+BJUVWL54q8tz4k\nsuAJqZm++19UENtbPuKa0hXjZzr6WVwGCp6+Tt/wfDQxD30Q8Kfayb4/IQuLj2rD\ntJAU7lZDAgMBAAECggEANFLnGygHwOr/VeWO9kCP1p2t0CNS4biv02C332EO6HSt\nNKel7q08wa3ZVEor1r8dw3t2+ULNq2VzI8fjTQ/pMZUY4ix5OCowv9AprCFLFKTo\nrry2tDQET+dIheeA62zEoow3DAL8tE1juOiG3dRcIgsXjCqyVSN1kZxiE9INkRwW\nnHwO0F/UjSBXUPCWgFDkw1b4VUjY/HpdqaL9qjIyl8uPiJnYYaKmMyEl3XYPYMaw\ntTkE7nmXFF0Pi2xMtKCw7QPmH1OQf3G67nmWg+fFaQzLpbBeVoSeEujjERnEH7xD\ndFutokVeaxjEsjDxJVvfh53PEhno7lfvTO0roeGpoQKBgQDiLtq0ijo3SBvY8+8X\ngyeUZtf3hIw7T0prjfgO9MDI1u3zjJ6D5lw4I9OQ2pntfJxCP5EwETxJyIXRMaOh\nDGZvjxC8hdIju6gf/Q9F15ZJmPCWsDY7Yx5cJ8vJYgaKPZpbC9CFUunErSE23RRD\nE9pIx4mJ6TlHpasGVl2ELwCV6QKBgQDUHFQaAaTy7SxeWKNq+YF9xpHIQW7q1SKB\nOTTn+THGyuUFiqYtMtsg7x6EUBrc+kZhdiQmf7Iho2FuRRj3jGPzbo04609amCeD\nG68PjkwnCGERaZGmR9UGDNoPlynUgRWzbs8LGAZhZ8xfTgbDmJCNh/g6KCua7hQa\n77nP8p0zSwKBgG4PQpjrUhyoV/Sf7k3QoifSS3DD7MDHen0Png8ZBd40x6DlYhTo\nuSMQO9iWpqQrKJYL/IgZOu7kRklfEDJDqGzMfuZdb723iL3YE+B2YUj6xMdug1Uu\njA1nx//8VRZbl4qKGzNk/x+W5zydI0joliUoA0M6W4cDlE8HI4Y4oN5RAoGBAM1q\n5fQNtZ5iHP793r2iB0s0vEhxPicE5Ja7PUaO6ir4odW9EfRh9R+vFCHVpj5tzy1i\nCd6S+oNjQ99T4bsT5lSBsxj1onM9Ob7aV668A3olvkPrtleP53klhyVkIumfXdHZ\nNYAr8znwGVgPK7PPk+bNUJOaBajUevofQhdmgeGDAoGAHoniSz4ROhbyTVKSQlAI\nOlIpt/50SkU7CDLwTid0LI3R75yhc29ScUHPnfTIbFfTrl8WEOn+hOZO9T2R40Zl\n10ZLGCVpGMJtkWJBkxHQoTVS9P9xEITbQB3C6Ju7grU6j2TJv1PZMXcE93ZbhveK\n45PM57B1MA8TjOuyQazEceg=\n-----END PRIVATE KEY-----\n",
+  "client_email": "vigia-419@gamescol-1540760932027.iam.gserviceaccount.com",
+  "client_id": "111396922139430944900",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vigia-419%40gamescol-1540760932027.iam.gserviceaccount.com"
 }
