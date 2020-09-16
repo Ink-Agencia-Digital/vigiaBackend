@@ -56,3 +56,7 @@ Route::resource('reservations', 'Reservation\ReservationController', ['except' =
  * Devices
  */
 Route::resource('devices', 'Device\DeviceController', ['except' => ['create', 'edit']]);
+/**
+ * Notificaciones
+ */
+Route::post('/alerts', 'Alert/AlertController@sendAlert');

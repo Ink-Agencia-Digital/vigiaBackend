@@ -13,4 +13,9 @@ class Device extends Model
         'code',
         'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

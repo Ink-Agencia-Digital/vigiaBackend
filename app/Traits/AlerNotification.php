@@ -16,7 +16,7 @@ trait AlerNotification
     {
         try {
             $messaging = app('firebase.messaging');
-            $title = "Alerta de seguridad " . $complex;
+            $title = "Alerta de seguridad " . $complex->name;
             $body = "Se ha enviado una alerta de seguridad en";
 
             $notification = Notification::fromArray([
