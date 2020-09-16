@@ -59,4 +59,4 @@ Route::resource('devices', 'Device\DeviceController', ['except' => ['create', 'e
 /**
  * Notificaciones
  */
-Route::post('/alerts', 'Alert/AlertController@sendAlert');
+Route::post('/alerts', 'Alert\AlertController@sendAlert');

@@ -17,8 +17,8 @@ class AlertController extends ApiController
     {
         $complex = Complex::findOrFail($request->complex_id);
         $user = User::findOrFail($request->user_id);
-        $devices = Device::whereHas('user.complex_administrator', function ($query) use ($complex) {
-            return $query->where('complexes.id', $complex->id);
+        $devices = Device::whereHas('user.complex_administrator', function ($query) use ($complex, $user) {
+            return $query->where([['complexes.id', "=", $complex->id], ['users.id', "!=", $user->id]]);
         })->get();
 
         $tokens = [];
