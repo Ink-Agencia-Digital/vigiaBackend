@@ -12,7 +12,7 @@ use Kreait\Firebase\Messaging\Notification;
  */
 trait AlerNotification
 {
-    private function notificateEmployees($complex, $tokens, $lat, $lng)
+    protected function notificateEmployees($complex, $tokens, $lat, $lng)
     {
         try {
             $messaging = app('firebase.messaging');
@@ -23,7 +23,7 @@ trait AlerNotification
                 'title' => $title,
                 'body' => $body,
             ]);
-            $message = new CloudMessage();
+            $message = CloudMessage::new();
             $message = $message->withNotification($notification)
                 ->withData([
                     "id" => "alert",
