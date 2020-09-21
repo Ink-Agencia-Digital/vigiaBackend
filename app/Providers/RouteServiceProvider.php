@@ -75,7 +75,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix('api')
             ->middleware('api')
             ->namespace($this->namespace)
-            ->prefix('api')
+            ->domain('{api}.vigiaelectronic.com.co')
             ->group(base_path('routes/api.php'));
     }
 }
