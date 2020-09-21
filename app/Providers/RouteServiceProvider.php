@@ -72,10 +72,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix('api')
+        Route::domain('{api}.vigiaelectronic.com.co')
             ->middleware('api')
             ->namespace($this->namespace)
-            ->domain('{api}.vigiaelectronic.com.co')
             ->group(base_path('routes/api.php'));
     }
 }
