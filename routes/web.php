@@ -13,11 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{any?}', function () {
-    return view('superadmin');
-})->where('any', '^(?!storage).*$')->name('dashboard');
+Route::domain('localhost')->group(function () {
+    Route::get('/{any?}', function () {
+        return view('superadmin');
+    })->where('any', '^(?!storage).*$')->name('dashboard');
+});
 
-Route::domain('{page}.myapp.com')->group(function () {
+
+Route::domain('{page}.vigiaelectronic.com.co')->group(function () {
     Route::get('/{any?}', function ($page) {
         switch ($page) {
             case 'dash':
