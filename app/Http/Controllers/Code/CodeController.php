@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Code;
 
 use App\Code;
 use App\Http\Controllers\Api\ApiController;
+use Illuminate\Support\Str;
 use App\Http\Resources\CodeResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CodeController extends ApiController
 {
@@ -45,6 +47,15 @@ class CodeController extends ApiController
     {
         $code = new Code;
         $code->fill($request->all());
+
+        if ($request->has('photo')) {
+            $image = $request->photo;
+            $image = str_replace('data:image/jpeg;base64,', '', $image);
+            $image = str_replace(' ', '+', $image);
+            $imageName = Str::random(10) . '.jpeg';
+            Storage::disk('images')->put($imageName, base64_decode($image));
+            $code->photo =  $imageName;
+        }
 
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 

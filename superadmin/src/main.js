@@ -85,12 +85,72 @@ Vue.component("vue-slider", VueSlider);
 Vue.component("vue-custom-scrollbar", VueCustomScrollbar);
 Vue.component(VueCountdown.name, VueCountdown);
 
+Axios.defaults.headers.common["Authorization"] = store.getters.getToken;
+
 Vue.prototype.$http = Axios;
 Axios.defaults.headers.common["Content-Type"] = "application/json";
 Axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 window.moment = moment;
 moment.locale("es-us");
+
+Axios.interceptors.response.use(
+  function(response) {
+    return response;
+  },
+  function(error) {
+    if (
+      error.response.status === 401 &&
+      error.config &&
+      !error.config.__isRetryRequest
+    ) {
+      store
+        .dispatch("logout")
+        .then(() => {
+          Vue.auth.destroyCookie();
+        })
+        .then(() => {
+          if (error.config.url !== "/oauth/token") {
+            window.location.reload();
+          }
+        });
+    }
+    return Promise.reject(error.response);
+  }
+);
+
+const router = new VueRouter({
+  routes,
+  mode: "history",
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.forVisitors) {
+    if (Vue.auth.isAuthenticated()) {
+      next({ name: "home" });
+    } else if (to.matched.some((record) => record.meta.can)) {
+      next();
+    } else {
+      next({ name: "home" });
+    }
+  } else if (to.meta.requiresAuth) {
+    if (!Vue.auth.isAuthenticated()) {
+      if (to.fullPath === "/") {
+        next({ name: "login" });
+      } else {
+        next({
+          name: "login",
+        });
+      }
+    } else if (to.meta.can) {
+      next();
+    } else {
+      next({ name: "login" });
+    }
+  } else {
+    next();
+  }
+});
 
 String.prototype.capitalize = function(lower) {
   return (lower ? this.toLowerCase() : this).replace(/(?:^|\s)\S/g, function(
@@ -99,11 +159,6 @@ String.prototype.capitalize = function(lower) {
     return a.toUpperCase();
   });
 };
-
-const router = new VueRouter({
-  routes,
-  mode: "history",
-});
 
 new Vue({
   render: (h) => h(App),

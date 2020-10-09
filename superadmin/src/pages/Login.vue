@@ -25,6 +25,7 @@
               class="form-control form-control-lg inverse-mode"
               placeholder="Email Address"
               required
+              v-model="user.email"
             />
           </div>
           <div class="form-group m-b-20">
@@ -33,6 +34,7 @@
               class="form-control form-control-lg inverse-mode"
               placeholder="Password"
               required
+              v-model="user.password"
             />
           </div>
           <div class="checkbox checkbox-css m-b-20">
@@ -42,9 +44,11 @@
           <div class="login-buttons">
             <button
               type="button"
-              @click="checkForm"
+              @click="login"
               class="btn btn-success btn-block btn-lg"
-            >Sign me in</button>
+            >
+              Sign me in
+            </button>
           </div>
         </div>
         <!-- end login-content -->
@@ -57,36 +61,52 @@
 </template>
 
 <script>
-import PageOptions from "../config/PageOptions.vue";
+import PageOptions from "@/config/PageOptions.vue";
+import { API } from "@/services/Api";
 
 export default {
   created() {
     PageOptions.pageEmpty = true;
   },
-  beforeRouteLeave() {
+  beforeRouteLeave(to, from, next) {
     PageOptions.pageEmpty = false;
-    window.location = "/home";
+    next();
+  },
+  data() {
+    return {
+      user: {
+        email: null,
+        password: null,
+      },
+    };
   },
   methods: {
-    checkForm: function() {
+    login: function() {
+      this.loader = this.$loading.show();
       this.$http({
+        url: "/oauth/token",
         method: "POST",
-        url: "/api/oauth/token",
         data: {
-          username: "ricardo1@dominio.com",
-          password: "12345678",
-          client_secret: "gRkm3DmM8DNwhDS5l7UYkUMkJiFa4tgRYgviMRVf",
-          client_id: "90ef3f03-b692-496e-9240-c6486e4c8c51",
-          grant_type: "password"
-        }
+          grant_type: API.GRANT_TYPE.PASSWORD,
+          client_id: API.CLIENT_ID,
+          client_secret: API.CLIENT_SECRET,
+          username: this.user.email,
+          password: this.user.password,
+        },
       })
-        .then(() => {
-          this.$router.replace("/home");
+        .then((response) => {
+          this.$store.dispatch("login", response.data).then(() => {
+          //  this.auth_user();
+          });
         })
-        .catch(error => {
-          console.trace(error);
+        .catch(() => {
+          this.loader.hide();
+          this.$swal({
+            title: "Error",
+            icon: "error",
+          });
         });
-    }
-  }
+    },
+  },
 };
 </script>

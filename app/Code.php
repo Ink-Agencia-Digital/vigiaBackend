@@ -13,7 +13,8 @@ class Code extends Model
     protected $fillable = [
         "apartment_id",
         "user_id",
-        'visitor'
+        'visitor',
+        'photo'
     ];
 
     /** Relationships */
