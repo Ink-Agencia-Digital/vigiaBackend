@@ -53,7 +53,7 @@ return [
             'root' => storage_path('app/photos'),
         ],
 
-        'photos' => [
+        'images' => [
             'driver' => 'local',
             'root' => storage_path('app/images'),
         ],
