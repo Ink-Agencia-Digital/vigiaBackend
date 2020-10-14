@@ -25,6 +25,7 @@ Route::post('email/verify', 'Auth\VerifyEmailController@verifyMail');
 /** User */
 Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
 Route::resource('users.reservations', 'User\UserReservationController', ['only' => ['index']]);
+Route::resource('users.chats', 'User\UserChatController', ['only' => ['index']]);
 /**Complex */
 Route::resource('complexes', 'Complex\ComplexController', ['except' => ['create', 'edit']]);
 Route::resource('complexes.locations', 'Complex\ComplexLocationController', ['only' => ['index']]);
@@ -60,3 +61,12 @@ Route::resource('devices', 'Device\DeviceController', ['except' => ['create', 'e
  * Notificaciones
  */
 Route::post('/alerts', 'Alert\AlertController@sendAlert');
+/**
+ * Chat
+ */
+Route::resource('chats', 'Chat\ChatController', ['except' => ['create', 'edit']]);
+Route::resource('chats.messages', 'Chat\ChatMessageController', ['except' => ['create', 'edit']]);
+/**
+ * Message
+ */
+Route::resource('messages', 'Message\MessageController', ['except' => ['create', 'edit']]);
