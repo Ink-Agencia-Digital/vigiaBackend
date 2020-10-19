@@ -47,4 +47,11 @@ class Complex extends Model
             return $query->where('roles.name', 'employee');
         });
     }
+
+    public function administrator()
+    {
+        return $this->belongsToMany(User::class, 'users_complexes')->whereHas('roles', function ($query) {
+            return $query->where('roles.name', 'complex');
+        });
+    }
 }
