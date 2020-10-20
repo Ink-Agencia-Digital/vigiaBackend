@@ -6,6 +6,7 @@ use App\Chat;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ChatResource;
+use App\User;
 use Illuminate\Http\Request;
 
 class ChatController extends ApiController
@@ -41,6 +42,11 @@ class ChatController extends ApiController
         $chat = new Chat;
         $chat->fill($request->all());
         $chat->saveOrFail();
+
+        if ($request->has('users')) {
+            $users = User::whereIn('id', $request->users)->get();
+            $chat->users()->attach($users);
+        }
 
         return $this->api_success([
             'data'      =>  new ChatResource($chat),
