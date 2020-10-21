@@ -43,7 +43,7 @@ class MessageController extends ApiController
         $message->fill($request->all());
         $message->saveOrFail();
 
-        event(new ChatEvent($message->load(['users'])));
+        event(new ChatEvent($message->load(['sender'])));
 
         return $this->api_success([
             'data'      =>  new MessageResource($message),
