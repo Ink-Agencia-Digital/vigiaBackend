@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::domain('localhost')->group(function () {
     Route::get('/{any?}', function () {
-        return view('adminconjuntos');
+        return view('reception');
     })->where('any', '^(?!storage).*$')->name('dashboard');
 });
 

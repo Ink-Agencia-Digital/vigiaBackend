@@ -16,8 +16,36 @@ class UserChatController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index(User $user, Request $request)
     {
+        if ($request->has('email')) {
+            $admin = User::where('email', $request->email)->first();
+            if ($user) {
+
+                $chat = Chat::whereHas('users', function ($query) use ($user) {
+                    return $query->where('users.id', $user->id);
+                })->whereHas('users', function ($query) use ($admin) {
+                    return $query->where('users.id', $admin->id);
+                })->first();
+
+                if ($chat) {
+
+                    return $this->singleResponse(new ChatResource($chat));
+
+                } else {
+                    
+                    $chat = new Chat;
+                    $chat->name = $request->email;
+                    $chat->saveOrFail();
+
+                    $chat->users()->attach([$user, $admin]);
+
+                    return $this->singleResponse(new ChatResource($chat));
+                }
+            } else {
+                return $this->errorResponse("Correo invalido");
+            }
+        }
         return $this->collectionResponse(ChatResource::collection($this->getModel(new Chat, [], $user->chats())));
     }
 
