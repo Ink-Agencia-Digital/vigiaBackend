@@ -18,7 +18,7 @@ class ChatMessageController extends ApiController
      */
     public function index(Chat $chat)
     {
-        return $this->collectionResponse(MessageResource::collection($this->getModel(new Message, [], $chat->messages())));
+        return $this->collectionResponse(MessageResource::collection($this->getModel(new Message, ["sender"], $chat->messages())));
     }
 
     /**
