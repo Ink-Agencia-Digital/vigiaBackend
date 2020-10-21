@@ -33,12 +33,12 @@ class UserChatController extends ApiController
                     return $this->singleResponse(new ChatResource($chat));
 
                 } else {
-                    
+
                     $chat = new Chat;
                     $chat->name = $request->email;
                     $chat->saveOrFail();
 
-                    $chat->users()->attach([$user, $admin]);
+                    $chat->users()->attach([$user->id, $admin->id]);
 
                     return $this->singleResponse(new ChatResource($chat));
                 }
