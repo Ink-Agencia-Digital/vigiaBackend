@@ -30,7 +30,7 @@ class UserChatController extends ApiController
 
                 if ($chat) {
 
-                    return $this->singleResponse(new ChatResource($chat));
+                    return $this->singleResponse(new ChatResource($chat->load(["users"])));
 
                 } else {
 
@@ -40,13 +40,13 @@ class UserChatController extends ApiController
 
                     $chat->users()->attach([$user->id, $admin->id]);
 
-                    return $this->singleResponse(new ChatResource($chat));
+                    return $this->singleResponse(new ChatResource($chat->load(["users"])));
                 }
             } else {
                 return $this->errorResponse("Correo invalido");
             }
         }
-        return $this->collectionResponse(ChatResource::collection($this->getModel(new Chat, [], $user->chats())));
+        return $this->collectionResponse(ChatResource::collection($this->getModel(new Chat, ['users'], $user->chats())));
     }
 
     /**
