@@ -40,7 +40,14 @@ class ApartmentUserController extends ApiController
      */
     public function store(Request $request, Apartment $apartment)
     {
-        //
+        $user = User::findOrFail($request->user_id);
+        $apartment->users()->attach($user->id);
+
+        return $this->api_success([
+            'data'      =>  new ApartmentResource($apartment->load(["users"])),
+            'message'   => __('pages.responses.updated'),
+            'code'      =>  201
+        ], 201);
     }
 
     /**
