@@ -1,0 +1,22 @@
+<div class="image">
+    <mat-card class="ejemplo-tarjeta">
+        <mat-card-header>
+            <label style="text-align: center; font-size: 26px;"><b>Chats</b></label>
+            <br>
+        </mat-card-header>
+        <mat-card-content>
+            <div *ngFor="let dt of chatUsuarios">
+                <div *ngFor="let us of dt.users">
+                    <div *ngIf="us.id !== infoData.id">
+                        <button class="buttonCs" (click)="vermensaje(dt.id)">
+                            <img src="http://api.vigiaelectronic.com.co/photos/{{us.photo}}" class="avatar" />
+                            &nbsp;&nbsp;&nbsp;
+                            <label class="title-css-user">{{us.name}} {{us.lastname}}</label>
+                            &nbsp;&nbsp;&nbsp;
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

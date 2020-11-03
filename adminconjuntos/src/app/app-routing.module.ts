@@ -1,3 +1,4 @@
+import { ChatCompletoComponent } from './Pages/chat/chat-completo/chat-completo.component';
 import { GuardService } from './_services/guard.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,8 +9,13 @@ import { BloquesApartamentosComponent } from './Pages/bloques-apartamentos/bloqu
 import { EmpleadosComponent } from './Pages/empleados/empleados.component';
 import { EventosComponent } from './Pages/eventos/eventos.component';
 import { ResidentesComponent } from './Pages/residentes/residentes.component';
+import { ChatComponent } from './Pages/chat/chat.component';
+import { AsociarClienteComponent } from './Pages/asociar-cliente/asociar-cliente.component';
 
 const routes: Routes = [
+  {path: 'asociarClientes', component: AsociarClienteComponent},
+  {path: 'chatCompleto', component:  ChatCompletoComponent},
+  {path: 'chat', component:  ChatComponent},
   {path: 'residentes', component:  ResidentesComponent},
   {path: 'eventos', component:  EventosComponent},
   {path: 'empleados', component:  EmpleadosComponent},

@@ -22,6 +22,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatSelectModule,
     MatDatepickerModule,
     ScrollingModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatGridListModule,
+    MatListModule
   ],
   exports: [
     MatButtonModule,
@@ -69,7 +73,9 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatSelectModule,
     MatDatepickerModule,
     ScrollingModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatGridListModule,
+    MatListModule
   ]
 })
 export class MaterialModule { }

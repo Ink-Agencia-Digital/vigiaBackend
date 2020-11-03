@@ -29,21 +29,20 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem(environment.TOKEN_NAME, log.access_token);
       sessionStorage.setItem('refresh_tk', log.refresh_token);
 
+
       const helper = new JwtHelperService();
       const token = sessionStorage.getItem(environment.TOKEN_NAME);
 
       this.login.logdataInfData(token).subscribe( dataUser => {
-        console.log(dataUser);
+        this.login.encryptarDataUser(dataUser);
         this.login.encryptarData(dataUser.complex_administrator);
         const rol = dataUser.roles[0];
-        console.log(rol);
         if (rol.name === 'complex'){
           this.usuario = '';
           this.contrasena = '';
           this.login.var.next('Ingreso Exitoso');
           this.router.navigate(['/bloquesYapartamentos']);
         }else {
-          console.log('error');
           this.usuario = '';
           this.contrasena = '';
         }

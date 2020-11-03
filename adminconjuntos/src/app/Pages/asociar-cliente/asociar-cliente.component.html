@@ -1,0 +1,57 @@
+<div class="image">
+    <mat-card class="ejemplo-tarjeta">
+        <div *ngIf="infoConjunto">
+            <mat-form-field  class="mat-form-field" appearance="fill">
+                <mat-label>Seleccione una torre</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let de of tower" value="{{de}}" (click)="tets(de)" >{{de.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div *ngIf="activarApartamentos === true">
+            <mat-form-field class="mat-form-field" appearance="fill">
+                <mat-label>Seleccione un apartamento</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let apt of apartamentos" value="{{apt}}" (click)="tets2(apt)">
+                        {{apt.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div *ngIf="activarBusqueda === true">
+            <input class="mat-form-field2" type="text" required pattern="^[0-9]+$" minlength="10"  maxlength="11" [(ngModel)]="cedulaUser">
+            <br>
+            <br>
+            <button class="buttonCss" [disabled]="cedulaUser === ''" (click)="buscar()">
+                Buscar
+            </button>
+        </div>
+        <div *ngIf="resultadoUser">
+            <label style="font-size: 25px;"><br>Resultado<br></label>
+            <div *ngFor="let us of resultadoUser"  style="border-radius: 8px; border-color: black;  border-style: groove;">
+                <label><b><br>Nombre:</b>&nbsp;{{us.name}}<br></label><br>
+                <label><b>Apellido:</b>&nbsp;{{us.lastname}}<br></label><br>
+                <label><b>Cedula:</b>&nbsp;{{us.identification}}<br></label><br>
+                <label><b>Email:</b>&nbsp;{{us.email}}<br></label><br>
+                <label><b>Telefono:</b>&nbsp;{{us.phone}}<br></label><br>
+                <br>
+                <button class="buttonCss" (click)="Asociar(us.id)">
+                    <span class="material-icons">
+                        done
+                    </span>
+                    Asociar al Apartamento
+                </button>
+                <br>
+                <br>
+                <button class="buttonCss" (click)="Desasociar(us.id)">
+                    <span class="material-icons">
+                        delete_forever
+                    </span>
+                    Remover Asociacion
+                </button>
+                <br>
+                <br>
+            </div>
+        </div>
+    </mat-card>
+</div>

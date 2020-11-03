@@ -70,4 +70,16 @@ export class LoginService {
     var obj = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
     return obj;
   }
+
+  encryptarDataUser(dataUser: any){
+    let encryptData = CryptoJS.AES.encrypt(JSON.stringify(dataUser), SECRET_KEY).toString();
+    sessionStorage.setItem('DataUser', encryptData);
+  }
+
+  desencryptarDataUser(){
+    let dataUs = sessionStorage.getItem('DataUser');
+    let bytes = CryptoJS.AES.decrypt(dataUs, SECRET_KEY);
+    var obj = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    return obj;
+  }
 }

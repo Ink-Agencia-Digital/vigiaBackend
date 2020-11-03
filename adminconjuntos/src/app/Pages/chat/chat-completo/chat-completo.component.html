@@ -1,0 +1,48 @@
+<br>
+<br>
+<br>
+<div class="search-results" infiniteScroll infiniteScrollDistance="2" infiniteScrollUpDistance="1.5"
+    infiniteScrollThrottle="50" (scrolled)="onScrollDown()" (scrolledUp)="onScrollUp()">
+
+    <mat-list *ngFor="let msg of mensaje">
+        <mat-list-item *ngIf="msg.sender_id !== usuarioActual" class="mensaje usuarios" style="margin-left: 15px; margin-right: 400px; width: 44%; height: 150px; float: left;">
+            <b >{{msg.sender.name}} {{msg.sender.lastname}}<br><br><br></b>
+
+            <span style="float: left;"><br><br><br>{{msg.message}}</span>
+
+            <label class="time" style="white-space: pre; float: right; margin-left: 200px;">
+                <br><br><br><br><br><br><br>{{msg.created_at | date:'short'}}<br>&nbsp;
+            </label>
+        </mat-list-item>
+        <br>
+        <br>
+        <mat-list-item *ngIf="msg.sender_id === usuarioActual" class="mensaje mi-usuarios" style="margin-left: 400px; margin-right: 15px; width: 44%; height: 150px; float: right;">
+            <b>{{msg.sender.name}} {{msg.sender.lastname}} <br></b>
+
+            <span style="white-space: pre;"><br><br><br><br>{{msg.message}} <br> </span>
+
+            <label class="time" style="white-space: pre; float: right; margin-left: 200px;">
+                <br><br><br><br><br><br>{{msg.created_at | date:'short'}}
+            </label><br>&nbsp;
+        </mat-list-item>
+
+    </mat-list>
+</div>
+
+<footer style="margin-top: 24%;">
+    <textarea autosize maxRow="4" placeholder="Digita tu mensaje...." [(ngModel)]="newMsg" class="msg-input"></textarea>
+    <button mat-button [disabled]="newMsg === ''" 
+    style="
+    background-color: rgba(248, 249, 250, 0.582);
+    width: 35px;
+    height: 37px;
+    padding-bottom: 12px;
+    padding-block-start: 4px;
+    padding-top: 1px;
+    bottom: 50px;
+    color: rgba(7, 7, 7, 0.582);
+    border-radius: 8px;
+    margin-left: 2px;" (click)="enviarMsg()">
+        Enviar
+    </button> 
+</footer>

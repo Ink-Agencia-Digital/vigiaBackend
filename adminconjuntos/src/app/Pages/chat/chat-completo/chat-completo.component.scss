@@ -1,0 +1,49 @@
+.usuarios{
+    background: rgba(0, 48, 97, 0.856);
+    color: #fff;
+}
+
+.mi-usuarios{
+    background: rgba(96, 175, 255, 0.733);
+    color: #fff;
+}
+
+.time{
+    color: #dfdfdf;
+    float: right;
+    font-size: small;
+}
+
+.mensaje{
+    padding: 10px;
+    height: 90px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+}
+
+.msg-input{
+    width: 50%;
+    height: 90px;
+    margin-left: 20%;
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 10px;
+    background-color: rgba(248, 249, 250, 0.582);
+    resize: none;
+    color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.msg-btn{
+    background-color: rgba(248, 249, 250, 0.582);
+    width: 30px;
+    height: 20px;
+    padding-bottom: 12px;
+    padding-block-start: 1px;
+    padding-top: 12px;
+    bottom: 45px;
+    color: rgba(7, 7, 7, 0.582);
+    border-radius: 8px;
+
+}
